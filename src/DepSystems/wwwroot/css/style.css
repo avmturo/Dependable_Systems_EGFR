@@ -1,0 +1,19 @@
+body > .container > .row
+{
+	border-radius: 4px;
+}
+
+footer
+{
+	height: 250px;
+}
+
+.jumbotron
+{
+	border-radius: 0;
+}
+
+.bg-jumbo
+{
+	background-color: #e9ecef;
+}
