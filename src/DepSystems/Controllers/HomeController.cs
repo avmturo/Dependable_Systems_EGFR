@@ -8,38 +8,31 @@ using DepSystems.Models;
 
 namespace DepSystems.Controllers
 {
+	// Things that can be done on the basic home pages...
+	// Index
+	// Calculation Index
+	// Login
+	// Logout
 	public class HomeController : Controller
 	{
-        [HttpGet]
+		[HttpGet]
 		public IActionResult Index()
 		{
 			return View();
 		}
 
-        // This will be called when a HttpPost is posted with the post containing calculation details
-        [HttpPost]
-        public IActionResult Index(Calculation postedCalculation)
-        {
-            return View(postedCalculation);
-        }
-
-		public IActionResult About()
+		// This will be called when a HttpPost is posted with the post containing calculation details
+		[HttpPost]
+		public IActionResult Index(Calculation postedCalculation)
 		{
-			ViewData["Message"] = "Your application description page.";
-
-			return View();
+			return View(postedCalculation);
 		}
 
-		public IActionResult Contact()
+		public IActionResult Login()
 		{
-			ViewData["Message"] = "Your contact page.";
-
-			return View();
-		}
-
-		public IActionResult Privacy()
-		{
-			return View();
+            return Index();
+            // This is how we would redirect
+			return RedirectToAction("Index", "Patient");
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

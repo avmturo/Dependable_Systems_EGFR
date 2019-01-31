@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -49,7 +50,10 @@ namespace DepSystems
 			app.UseStaticFiles();
 			app.UseCookiePolicy();
 
-			app.UseMvc(routes =>
+            //https://stackoverflow.com/questions/45734194/local-user-account-store-for-web-api-in-asp-net-core-2-0
+            app.UseAuthentication();
+
+            app.UseMvc(routes =>
 			{
 				routes.MapRoute(
 					name: "default",
