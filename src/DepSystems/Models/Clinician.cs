@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace DepSystems.Models
+﻿namespace DepSystems.Models
 {
-    public class Clinician : IdentityUser
+    public class Clinician
     {
     }
 }

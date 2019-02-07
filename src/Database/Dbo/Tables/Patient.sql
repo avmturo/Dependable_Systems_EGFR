@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Patient]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+	[NHSNumber] NVARCHAR(50) NOT NULL,
+	[Password] NVARCHAR(50) NOT NULL
+)

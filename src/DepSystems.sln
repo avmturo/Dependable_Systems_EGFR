@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepSystems", "DepSystems\DepSystems.csproj", "{0D8DE8FD-9135-4114-8406-2F61341A81CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DepSystems", "DepSystems\DepSystems.csproj", "{0D8DE8FD-9135-4114-8406-2F61341A81CC}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{EB5B018E-99CD-489B-BE01-D992926164A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLibrary", "DataLibrary\DataLibrary.csproj", "{082DDF52-3C8B-4F9D-92E9-D599E16BC923}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,16 @@ Global
 		{0D8DE8FD-9135-4114-8406-2F61341A81CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D8DE8FD-9135-4114-8406-2F61341A81CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D8DE8FD-9135-4114-8406-2F61341A81CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB5B018E-99CD-489B-BE01-D992926164A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB5B018E-99CD-489B-BE01-D992926164A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB5B018E-99CD-489B-BE01-D992926164A7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EB5B018E-99CD-489B-BE01-D992926164A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB5B018E-99CD-489B-BE01-D992926164A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB5B018E-99CD-489B-BE01-D992926164A7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{082DDF52-3C8B-4F9D-92E9-D599E16BC923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{082DDF52-3C8B-4F9D-92E9-D599E16BC923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{082DDF52-3C8B-4F9D-92E9-D599E16BC923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{082DDF52-3C8B-4F9D-92E9-D599E16BC923}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
