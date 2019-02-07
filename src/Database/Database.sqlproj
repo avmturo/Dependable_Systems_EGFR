@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Dbo\Tables\Patient.sql" />
+    <Build Include="Dbo\Tables\Clinician.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Profiles\Database.publish.xml" />

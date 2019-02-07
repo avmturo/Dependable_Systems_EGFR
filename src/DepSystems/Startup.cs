@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,23 +26,28 @@ namespace DepSystems
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.Configure<CookiePolicyOptions>(options =>
+            services.AddHttpContextAccessor();
+            services.Configure<CookiePolicyOptions>(options =>
 			{
 				// This lambda determines whether user consent for non-essential cookies is needed for a given request.
-				options.CheckConsentNeeded = context => true;
-				options.MinimumSameSitePolicy = SameSiteMode.None;
+				//options.CheckConsentNeeded = context => true;
+				//options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
+            //services.Configure<IHttpContextAccessor>(options =>
+            //{
+
+            //});
 
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
                 // Todo: Come back to this later and increase
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.IdleTimeout = TimeSpan.FromSeconds(100);
                 options.Cookie.HttpOnly = true;
             });
 
 
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc();//.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,9 +62,22 @@ namespace DepSystems
 				app.UseExceptionHandler("/Home/Error");
 			}
 
+            app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseCookiePolicy();
             app.UseSession();
+
+            //app.Use((context, next) =>
+            //{
+            //    byte[] loginStatus;
+
+            //    if(context.Session.TryGetValue("LOGIN_STATUS", out loginStatus))
+            //    {
+            //        //con
+            //    }
+            //    // Call the next delegate/middleware in the pipeline
+            //    return next();
+            //});
 
             //https://stackoverflow.com/questions/45734194/local-user-account-store-for-web-api-in-asp-net-core-2-0
             //app.UseAuthentication();

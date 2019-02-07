@@ -34,5 +34,28 @@ namespace DataLibrary.BusinessLogic
                     FROM dbo.Patient"  
             );
         }
+
+        public static PatientModel AuthorisePatient(string nhsNumber, string password)
+        {
+            PatientModel data = new PatientModel
+            {
+                NHSNumber = nhsNumber,
+                Password = password
+            };
+
+            List<PatientModel> patientModels = SqlDataAccess.Load<PatientModel>
+            (
+                @"SELECT *
+                    FROM dbo.Patient
+                    WHERE NHSNumber = @NHSNumber AND Password = @Password",
+                data
+            );
+
+            if(patientModels.Count == 0)
+            {
+                return null;
+            }
+            return patientModels[0];
+        }
     }
 }

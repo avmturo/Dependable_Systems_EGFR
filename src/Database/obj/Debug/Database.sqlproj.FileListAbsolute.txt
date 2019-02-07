@@ -7,3 +7,4 @@ H:\Data\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\Model.xml
 H:\Data\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\refactor.xml
 H:\Data\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\postdeploy.sql
 H:\Data\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\predeploy.sql
+H:\Data\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\Database.sqlprojAssemblyReference.cache

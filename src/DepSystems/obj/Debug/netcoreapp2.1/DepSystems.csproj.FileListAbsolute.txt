@@ -131,3 +131,4 @@ H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\bin\Debug\netcoreapp2.1\Da
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\bin\Debug\netcoreapp2.1\DataLibrary.pdb
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\bin\Debug\netcoreapp2.1\Dapper.xml
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Home\PatientDetails.g.cshtml.cs
+H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Session\Login.g.cshtml.cs

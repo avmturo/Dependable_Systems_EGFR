@@ -25,6 +25,14 @@ namespace DataLibrary
             }
         }
 
+        public static List<T> Load<T>(string sql, T data)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(ConnectionString()))
+            {
+                return dbConnection.Query<T>(sql, data).ToList();
+            }
+        }
+
         public static int Save<T>(string sql, T data)
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString()))
