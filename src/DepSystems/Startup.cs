@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Session;
 
 namespace DepSystems
 {
@@ -31,6 +32,14 @@ namespace DepSystems
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
 
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                // Todo: Come back to this later and increase
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+            });
+
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}
@@ -49,9 +58,10 @@ namespace DepSystems
 
 			app.UseStaticFiles();
 			app.UseCookiePolicy();
+            app.UseSession();
 
             //https://stackoverflow.com/questions/45734194/local-user-account-store-for-web-api-in-asp-net-core-2-0
-            app.UseAuthentication();
+            //app.UseAuthentication();
 
             app.UseMvc(routes =>
 			{

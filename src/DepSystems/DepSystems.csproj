@@ -22,4 +22,8 @@
     <None Include="wwwroot\images\alpha.svg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DataLibrary\DataLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
