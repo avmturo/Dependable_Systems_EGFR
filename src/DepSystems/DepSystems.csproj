@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Views\img\" />
+    <Folder Include="Views\Patient\" />
   </ItemGroup>
 
   <ItemGroup>

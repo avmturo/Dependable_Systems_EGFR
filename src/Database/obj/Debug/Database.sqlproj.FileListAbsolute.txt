@@ -8,3 +8,9 @@ H:\Data\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\refactor.xml
 H:\Data\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\postdeploy.sql
 H:\Data\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\predeploy.sql
 H:\Data\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\Database.sqlprojAssemblyReference.cache
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\Database\bin\Debug\Database.dacpac
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\Database\bin\Debug\Database.dll
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\Database\bin\Debug\Database.pdb
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\Database.sqlprojAssemblyReference.cache
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\Database.dll
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\Database\obj\Debug\Database.pdb

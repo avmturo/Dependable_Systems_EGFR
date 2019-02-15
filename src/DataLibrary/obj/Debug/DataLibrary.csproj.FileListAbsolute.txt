@@ -7,3 +7,12 @@ H:\Data\GitHub\Dependable_Systems_EGFR\src\DataLibrary\obj\Debug\DataLibrary.csp
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DataLibrary\obj\Debug\DataLibrary.csproj.CopyComplete
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DataLibrary\obj\Debug\DataLibrary.dll
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DataLibrary\obj\Debug\DataLibrary.pdb
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DataLibrary\bin\Debug\DataLibrary.dll
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DataLibrary\bin\Debug\DataLibrary.pdb
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DataLibrary\bin\Debug\Dapper.dll
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DataLibrary\bin\Debug\Dapper.xml
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DataLibrary\obj\Debug\DataLibrary.csprojAssemblyReference.cache
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DataLibrary\obj\Debug\DataLibrary.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DataLibrary\obj\Debug\DataLibrary.csproj.CopyComplete
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DataLibrary\obj\Debug\DataLibrary.dll
+C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DataLibrary\obj\Debug\DataLibrary.pdb

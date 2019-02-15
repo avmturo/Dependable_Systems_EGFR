@@ -1,13 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Http
-@inject IHttpContextAccessor HttpContextAccessor
-@{
-    byte[] loginStatus;
-    bool isLoggedIn = false;
+@using DepSystems.Controllers;
+@using DepSystems.Enums;
+@using DepSystems.Utilities;
 
-    if (HttpContextAccessor.HttpContext.Session.TryGetValue("LOGIN_STATUS", out loginStatus))
-    {
-        isLoggedIn = loginStatus[0] == 1;
-    }
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    UserType loggedInUser = SessionController.GetLoggedInUserType(HttpContextAccessor.HttpContext.Session);
 }
 
 <nav class="container navbar navbar-expand-lg navbar-light">
@@ -22,21 +21,23 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-            <!-- This will be displayed if logged in
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>-->
+            @if (loggedInUser == UserType.Patient)
+            {
+                <li class="@Html.IsSelected("Index", "Patient", "active") nav-item">
+                    @Html.ActionLink("Home", "Index", "Patient", null, new { @class = "nav-link" })
+                    @*<a class="nav-link" href="Patient">Home <span class="sr-only">(current)</span></a>*@
+                </li>
+                <li class="@Html.IsSelected("Details", "Patient", "active") nav-item">
+                    @Html.ActionLink("My Details", "Details", "Patient", null, new { @class = "nav-link" })
+                    @*<a class="nav-link" href="Patient/Details">My Details</a>*@
+                </li>
+                <li class="@Html.IsSelected("History", "Patient", "active") nav-item">
+                    @Html.ActionLink("My History", "History", "Patient", null, new { @class = "nav-link" })
+                    @*<a class="nav-link" href="Patient/History">My History</a>*@
+                </li>
+            }
         </ul>
-        @if (!isLoggedIn)
+        @if (loggedInUser == UserType.None)
         {
             <form class="form-inline my-2 my-lg-0">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#loginModal">
@@ -44,10 +45,34 @@
                 </button>
             </form>
         }
+        else
+        {
+            <form asp-controller="Session" asp-action="Logout" class="form-inline my-2 my-lg-0">
+                <input type="submit" class="btn btn-outline-danger my-2 my-sm-0" value="Logout" />
+            </form>
+        }
     </div>
 </nav>
 
-@if (!isLoggedIn)
+@if (loggedInUser == UserType.None)
 {
     <partial name="_LoginPartial" model="new LoginDetails()" />
+}
+
+@* Success/Error Messages *@
+@if (ViewData["SuccessMessage"] != null)
+{
+    <div class="row justify-content-center">
+        <div class="col-10 text-center text-success">
+            @ViewData["SuccessMessage"]
+        </div>
+    </div>
+}
+@if (ViewData["ErrorMessage"] != null)
+{
+    <div class="row justify-content-center">
+        <div class="col-10 text-center text-danger">
+            @ViewData["ErrorMessage"]
+        </div>
+    </div>
 }

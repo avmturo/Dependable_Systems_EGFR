@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using Dapper;
+using DataLibrary.Models;
 
 namespace DataLibrary
 {
@@ -33,11 +34,83 @@ namespace DataLibrary
             }
         }
 
+        public static T LoadSingle<T>(string sql)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(ConnectionString()))
+            {
+                return dbConnection.Query<T>(sql).Single();
+            }
+        }
+
+        public static T LoadSingle<T>(string sql, T data)
+        {
+            using (IDbConnection dbConnection = new SqlConnection(ConnectionString()))
+            {
+                return dbConnection.Query<T>(sql, data).Single();
+            }
+        }
+
+        //public static List<PatientModel> LoadPatientsWithDetails()
+        //{
+        //    string sql = @"SELECT P.Id, P.NHSNumber, P.Password, P.FK_PatientDetails_Id,
+        //                        PD.Id, PD.Dob, PD.IsFemale, PD.IsBlack
+        //                    FROM Patient P
+        //                    INNER JOIN PatientDetails PD
+        //                    ON P.FK_PatientDetails_Id = PD.Id";
+
+        //    using (IDbConnection dbConnection = new SqlConnection(ConnectionString()))
+        //    {
+        //        return dbConnection.Query<PatientModel, PatientDetailsModel, PatientModel>(sql, (patient, patientDetails) =>
+        //        {
+        //            patient.Details = patientDetails;
+        //            return patient;
+        //        }).ToList();
+        //    }
+        //}
+
+        //public static PatientModel LoadPatientWithDetails(int patientId)
+        //{
+        //    string sql = @"SELECT P.Id, P.NHSNumber, P.Password, P.FK_PatientDetails_Id,
+        //                        PD.Id, PD.Dob, PD.IsFemale, PD.IsBlack
+        //                    FROM Patient P
+        //                    LEFT JOIN PatientDetails PD
+        //                    ON P.FK_PatientDetails_Id = PD.Id
+        //                    WHERE P.Id = @PatientId";
+
+        //    PatientModel patientModel = null;
+        //    using (IDbConnection dbConnection = new SqlConnection(ConnectionString()))
+        //    {
+        //        var patientList = dbConnection.Query<PatientModel, PatientDetailsModel, PatientModel>(sql, (patient, patientDetails) =>
+        //        {
+        //            patient.Details = patientDetails;
+        //            return patient;
+        //        }, new { PatientId = patientId }).ToList();
+
+        //        if(patientList.Count != 0)
+        //        {
+        //            patientModel = patientList[0];
+        //        }
+        //    }
+
+        //    return patientModel;
+        //}
+
         public static int Save<T>(string sql, T data)
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString()))
             {
                 return dbConnection.Execute(sql, data);
+            }
+        }
+
+        public static int SaveReturnId<T>(string sql, T data)
+        {
+            //https://stackoverflow.com/questions/8270205/how-do-i-perform-an-insert-and-return-inserted-identity-with-dapper
+            sql += @"SELECT CAST(SCOPE_IDENTITY() as int)";
+
+            using (IDbConnection dbConnection = new SqlConnection(ConnectionString()))
+            {
+                return dbConnection.Query<int>(sql, data).Single();
             }
         }
     }

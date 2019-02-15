@@ -1,0 +1,56 @@
+﻿@using System.Globalization;
+@using DepSystems.Enums;
+@model DepSystems.Models.PatientDetails
+@{
+    ViewData["Title"] = "Personal Details";
+    string dateString = (Model == null) ? DateTime.Now.ToString() : Model.DateOfBirth.ToString();
+    dateString = dateString.Split(" ")[0];
+}
+
+<h4>Personal Details</h4>
+<hr />
+
+@if(Model == null)
+{
+    <div class="row justify-content-center">
+        <div class="col-8 mb-4">
+            You have not yet saved your personal details. Saving your details allows for faster interaction with the calculator and enables that possibility of recording
+            your history of eGFR values.
+        </div>
+    </div>
+}
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Details">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-12 input-group mb-3">
+                <div class="input-group-prepend">
+                    <label asp-for="DateOfBirth" class="input-group-text"></label>
+                </div>
+                <input asp-for="DateOfBirth" value="@dateString" class="form-control" aria-describedby="DateOfBirthHelpBlock"/>
+                <small id="DateOfBirthHelpBlock" class="form-text text-muted">
+                    Your date of birth must be provided in the UK format (DD/MM/YYYY).
+                </small>
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="col-12 input-group mb-3">
+                <div class="input-group-prepend">
+                    <label asp-for="Gender" class="input-group-text"></label>
+                </div>
+                <select asp-for="Gender" asp-items="Html.GetEnumSelectList(typeof (Gender))" class="custom-select"></select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="col-12 input-group mb-3">
+                <div class="input-group-prepend">
+                    <label asp-for="Ethnicity" class="input-group-text"></label>
+                </div>
+                <select asp-for="Ethnicity" asp-items="Html.GetEnumSelectList(typeof (Ethnicity))" class="custom-select"></select>
+                <span asp-validation-for="Ethnicity" class="text-danger"></span>
+            </div>
+            <div class="col-12 text-center">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
