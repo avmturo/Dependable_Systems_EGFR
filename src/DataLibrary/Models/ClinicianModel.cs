@@ -8,7 +8,8 @@ namespace DataLibrary.Models
 {
     public class ClinicianModel
     {
-        public string Username { get; set; }
+        public int Id { get; set; }
+        public string HCPId { get; set; }
         public string Password { get; set; }
     }
 }

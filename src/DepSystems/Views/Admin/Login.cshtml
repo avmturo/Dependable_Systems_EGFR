@@ -4,7 +4,9 @@
 @using DepSystems.Enums
 @model DepSystems.Models.LoginDetails
 
-@Model.UserType = UserType.Admin
+@{
+    Model.UserType = UserType.Admin;
+}
 
 <h4>Login</h4>
 <hr />

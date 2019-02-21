@@ -25,7 +25,7 @@ namespace DepSystems.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            return View(new LoginDetails());
         }
 
         [HttpPost]

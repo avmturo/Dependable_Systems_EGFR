@@ -12346,7 +12346,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\k1528824\\.nuget\\packages\\": {},
+    "C:\\Users\\K1612040\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -12355,14 +12355,14 @@
       "projectUniqueName": "H:\\Data\\GitHub\\Dependable_Systems_EGFR\\src\\DepSystems\\DepSystems.csproj",
       "projectName": "DepSystems",
       "projectPath": "H:\\Data\\GitHub\\Dependable_Systems_EGFR\\src\\DepSystems\\DepSystems.csproj",
-      "packagesPath": "C:\\Users\\k1528824\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\K1612040\\.nuget\\packages\\",
       "outputPath": "H:\\Data\\GitHub\\Dependable_Systems_EGFR\\src\\DepSystems\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\k1528824\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\K1612040\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

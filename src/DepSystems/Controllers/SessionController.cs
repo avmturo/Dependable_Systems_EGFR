@@ -27,6 +27,12 @@ namespace DepSystems.Controllers
             }
         }
 
+        public static void Login(ISession session, ClinicianModel clinician)
+        {
+            session.Set(LOGIN_STATUS, new byte[] { (byte)UserType.Clinician });
+            session.Set(LOGIN_ID, BitConverter.GetBytes(clinician.Id));
+        }
+
         public static void Login(ISession session, AdminModel admin)
         {
             session.Set(LOGIN_STATUS, new byte[] { (byte)UserType.Admin });
