@@ -13,6 +13,8 @@ namespace DepSystems.Controllers
         private const string LOGIN_STATUS = "LOGIN_STATUS";
         private const string LOGIN_ID = "LOGIN_ID";
         private const string PATIENT_DETAILS = "PATIENT_DETAILS";
+        private const string ADMIN_DETAILS = "ADMIN_DETAILS";
+
 
         public static void Login(ISession session, PatientModel patient, PatientDetailsModel patientDetails)
         {
@@ -23,6 +25,13 @@ namespace DepSystems.Controllers
             {
                 session.Set(PATIENT_DETAILS, patientDetails.Serialize());
             }
+        }
+
+        public static void Login(ISession session, AdminModel admin)
+        {
+            session.Set(LOGIN_STATUS, new byte[] { (byte)UserType.Admin });
+            session.Set(LOGIN_ID, BitConverter.GetBytes(admin.Id));
+
         }
 
         public static void Logout(ISession session)

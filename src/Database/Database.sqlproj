@@ -65,6 +65,7 @@
     <Build Include="Dbo\Tables\Patient.sql" />
     <Build Include="Dbo\Tables\Clinician.sql" />
     <Build Include="Dbo\Tables\PatientDetails.sql" />
+    <Build Include="Dbo\Tables\Admin.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Profiles\Database.publish.xml" />

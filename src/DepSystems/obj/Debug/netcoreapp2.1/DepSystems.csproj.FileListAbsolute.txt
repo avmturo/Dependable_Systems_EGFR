@@ -137,3 +137,4 @@ C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\
 C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Details.g.cshtml.cs
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Details.g.cshtml.cs
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Index.g.cshtml.cs
+H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Admin\CreateClinician.g.cshtml.cs
