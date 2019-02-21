@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DepSystems.Filters;
+using DepSystems.Enums;
 
 namespace DepSystems.Controllers
 {
@@ -12,6 +14,7 @@ namespace DepSystems.Controllers
         /// Displays the landing page that a clinician sees when logging in
         /// </summary>
         /// <returns></returns>
+        [CustomValidate(UserType.Clinician, "/Clinician")]
         public IActionResult Index()
         {
             return View();

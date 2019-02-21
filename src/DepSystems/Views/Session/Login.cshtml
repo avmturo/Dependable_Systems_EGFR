@@ -2,7 +2,8 @@
 @model DepSystems.Models.LoginDetails
 @{
     List<SelectListItem> userTypes = Html.GetEnumSelectList(typeof(UserType)).ToList();
-    userTypes.RemoveAt(0);
+    userTypes.RemoveAt((int)UserType.Admin);
+    userTypes.RemoveAt((int)UserType.None);
 }
 
 <h4>Login</h4>

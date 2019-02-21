@@ -45,7 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\AdminProcessor.cs" />
+    <Compile Include="BusinessLogic\ClinicianProcessor.cs" />
     <Compile Include="BusinessLogic\PatientProcessor.cs" />
+    <Compile Include="Models\ClinicianModel.cs" />
     <Compile Include="Models\PatientDetailsModel.cs" />
     <Compile Include="Models\PatientModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -26,7 +26,14 @@ namespace DepSystems.Filters
 
             if(userTypeInt < _userTypeInt)
             {
-                context.Result = new RedirectToActionResult("Login", "Session", new { redirect });
+                if (_userType == UserType.Admin)
+                {
+                    context.Result = new RedirectToActionResult("Login", "Admin", new { redirect });
+                }
+                else
+                {
+                    context.Result = new RedirectToActionResult("Login", "Session", new { redirect });
+                }
             }
             base.OnResultExecuting(context);
         }

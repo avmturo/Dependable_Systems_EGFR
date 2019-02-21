@@ -2,7 +2,8 @@
 @model LoginDetails
 @{
     List<SelectListItem> userTypes = Html.GetEnumSelectList(typeof(UserType)).ToList();
-    userTypes.RemoveAt(0);
+    userTypes.RemoveAt((int)UserType.Admin);
+    userTypes.RemoveAt((int)UserType.None);
 }
 
 <!-- Login Modal -->
