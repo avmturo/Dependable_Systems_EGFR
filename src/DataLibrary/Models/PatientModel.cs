@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataLibrary.Models
+﻿namespace DataLibrary.Models
 {
     public class PatientModel
     {
+        /// <summary>
+        /// The required length of a patients NHS Number
+        /// </summary>
+        public const int NHS_NUMBER_LENGTH = 10;
+
+        /// <summary>
+        /// The required length of a patients password
+        /// </summary>
+        public const int PASSWORD_LENGTH = 7;
+
         public int Id { get; set; }
         public string NHSNumber { get; set; }
         public string Password { get; set; }

@@ -89,19 +89,34 @@ namespace DepSystems.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginDetails loginDetails)
+        public IActionResult PatientLogin(Patient patient)
         {
-            PatientModel patient = PatientProcessor.AuthorisePatient(loginDetails.Id, loginDetails.Password);
-            if(patient != null)
+            PatientModel patientModel = PatientProcessor.AuthorisePatient(patient.NHSNumber, patient.Password);
+            if (patientModel != null)
             {
                 PatientDetailsModel patientDetails = null;
-                if(patient.Details != null)
+                if (patient.Details != null)
                 {
-                    patientDetails = PatientProcessor.LoadPatientDetails((int)patient.Details);
+                    patientDetails = PatientProcessor.LoadPatientDetails((int)patientModel.Details);
                 }
 
-                Login(HttpContext.Session, patient, patientDetails);
+                Login(HttpContext.Session, patientModel, patientDetails);
                 return RedirectToAction("Index", "Patient");
+            }
+
+            ViewData["ErrorMessage"] = "Your login credentials did not match our records. Please try again.";
+            return Login(redirect: null);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ClinicianLogin(Clinician clinician)
+        {
+            ClinicianModel clinicianModel = ClinicianProcessor.AuthoriseClinician(clinician.HCPId, clinician.ClinicianPassword);
+            if (clinicianModel != null)
+            {
+                Login(HttpContext.Session, clinicianModel);
+                return RedirectToAction("Index", "Clinician");
             }
 
             ViewData["ErrorMessage"] = "Your login credentials did not match our records. Please try again.";

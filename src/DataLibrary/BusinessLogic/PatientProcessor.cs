@@ -66,6 +66,10 @@ namespace DataLibrary.BusinessLogic
 
         public static PatientModel AuthorisePatient(string nhsNumber, string password)
         {
+            if(nhsNumber == null || password == null)
+            {
+                return null;
+            }
             PatientModel data = new PatientModel
             {
                 NHSNumber = nhsNumber,

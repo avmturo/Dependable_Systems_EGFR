@@ -1,19 +1,40 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.IO;
+using DataLibrary.Models;
 using DepSystems.Enums;
 
 namespace DepSystems.Models
 {
     public class Patient
     {
+        // GRRRR Need to find a workaround, otherwise our error messages arent helpful enough
+        //private const string MAX_LENGTH_ERROR = "The password you provided was too short. Password length must be " + PatientModel.PASSWORD_LENGTH;
+
+        [Required]
         [Display(Name = "NHS Number")]
+        [MaxLength(PatientModel.NHS_NUMBER_LENGTH, ErrorMessage = "The NHS Number you provided is too short.")]
+        [MinLength(PatientModel.NHS_NUMBER_LENGTH, ErrorMessage = "The NHS Number you provided is too long.")]
         public string NHSNumber { get; set; }
 
+        [Required]
         [DataType(DataType.Password)]
+        [MaxLength(PatientModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too short.")]
+        [MinLength(PatientModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too long.")]
         public string Password { get; set; }
 
         public PatientDetails Details { get; set; }
+
+        public static bool IsValidNHSNumber(string nhsNumber)
+        {
+            // Need to check if all nhs numbers begin with a 2?
+            return nhsNumber.Length == PatientModel.NHS_NUMBER_LENGTH;
+        }
+
+        public static bool IsValidPassord(string password)
+        {
+            // Need to check if the rule for patient passwords is that they all start with a p?
+            return password.Length == PatientModel.PASSWORD_LENGTH;
+        }
     }
 
     public class PatientDetails

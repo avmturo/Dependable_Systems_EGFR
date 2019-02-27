@@ -25,15 +25,21 @@
             {
                 <li class="@Html.IsSelected("Index", "Patient", "active") nav-item">
                     @Html.ActionLink("Home", "Index", "Patient", null, new { @class = "nav-link" })
-                    @*<a class="nav-link" href="Patient">Home <span class="sr-only">(current)</span></a>*@
                 </li>
                 <li class="@Html.IsSelected("Details", "Patient", "active") nav-item">
                     @Html.ActionLink("My Details", "Details", "Patient", null, new { @class = "nav-link" })
-                    @*<a class="nav-link" href="Patient/Details">My Details</a>*@
                 </li>
                 <li class="@Html.IsSelected("History", "Patient", "active") nav-item">
                     @Html.ActionLink("My History", "History", "Patient", null, new { @class = "nav-link" })
-                    @*<a class="nav-link" href="Patient/History">My History</a>*@
+                </li>
+            }
+            else if (loggedInUser == UserType.Clinician)
+            {
+                <li class="@Html.IsSelected("Index", "Clinician", "active") nav-item">
+                    @Html.ActionLink("Home", "Index", "Clinician", null, new { @class = "nav-link" })
+                </li>
+                <li class="@Html.IsSelected("ImportPatients", "Clinician", "active") nav-item">
+                    @Html.ActionLink("Upload Patients", "ImportPatients", "Clinician", null, new { @class = "nav-link" })
                 </li>
             }
         </ul>
@@ -56,7 +62,7 @@
 
 @if (loggedInUser == UserType.None)
 {
-    <partial name="_LoginPartial" model="new LoginDetails()" />
+    <partial name="_LoginPartial" />
 }
 
 @* Success/Error Messages *@
