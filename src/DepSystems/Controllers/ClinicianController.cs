@@ -8,6 +8,8 @@ namespace DepSystems.Controllers
 {
     public class ClinicianController : Controller
     {
+        ////https://www.ryadel.com/en/asp-net-mvc-fix-ambiguous-action-methods-errors-multiple-action-methods-action-name-c-sharp-core/
+
         /// <summary>
         /// Displays the landing page that a clinician sees when logging in
         /// </summary>
@@ -33,19 +35,35 @@ namespace DepSystems.Controllers
             if(!CsvProcessor.IsCsv(importPatientCredentials.File))
             {
                 ViewData["ErrorMessage"] = "Could not upload patients, the file provided was not a CSV file.";
-                return RedirectToAction("ImportPatients");
+                return View(viewName: "ImportPatients");
             }
 
             var errorMessages = CsvProcessor.GetPatientCredentials(importPatientCredentials.File, out List<Patient> parsedPatients);
-            if(parsedPatients.Count == 0)
+            if(errorMessages.Count != 0)
             {
-                ViewData["ErrorMessage"] = "No patients were uploaded, check the file matches the format required.";
-                ViewData["ImportErrorMessages"] = errorMessages;
-                return RedirectToAction("ImportPatients");
+                ViewData["ErrorMessages"] = errorMessages;
             }
 
+            // No patients parsed then return with errors. If there are patients parsed but the user does not want to upload
+            // if there are errors, then simply return with errors
+            if(parsedPatients.Count == 0 || !importPatientCredentials.UploadWithErrors)
+            {
+                ViewData["ErrorMessage"] = "No patients were uploaded, check the file matches the format required.";
+                return View(viewName: "ImportPatients");
+            }
+
+            // TODO: Update the database
+
             ViewData["SuccessMessage"] = $"{parsedPatients.Count} Patients were uploaded successfully.";
-            return RedirectToAction("ImportPatients");
+            return View(viewName: "ImportPatients");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ManualPatientCredentials(ManualPatientCredentials manualPatientCredentials)
+        {
+
+            return View(viewName: "ImportPatients");
         }
 
 

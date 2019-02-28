@@ -56,14 +56,21 @@ namespace DepSystems
                         continue;
                     }
 
+                    bool valid = true;
                     foreach(var value in commaSeparatedValues)
                     {
                         if(!value.All(c=> char.IsLetterOrDigit(c)))
                         {
                             errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
                             $"Non AlphaNumeric character found");
-                            continue;
+                            valid = false;
+                            break;
                         }
+                    }
+
+                    if(!valid)
+                    {
+                        continue;
                     }
 
                     if(!Patient.IsValidNHSNumber(commaSeparatedValues[0]))
