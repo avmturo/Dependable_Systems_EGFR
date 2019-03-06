@@ -19,6 +19,13 @@ namespace DepSystems.Models
         // Add a max/min validation attribute
         public double CreatineLevel { get; set; }
 
+        public Calculation(int a, Ethnicity e, Gender g, double cl)
+        {
+            Age = a;
+            Ethnicity = e; 
+            Gender = g;
+            CreatineLevel = cl;
+        }
         public double Calculate()
         {
             //eGFR  value  in  ml/min/1.73m2 = 
@@ -29,6 +36,38 @@ namespace DepSystems.Models
             double gen = 1 - ((int)Gender * 0.258);
 
             return 186 * Math.Pow(CreatineLevel / 88.4, -1.154) * Math.Pow(Age, -0.203) * gen * eth;
+
+
+        }
+        public static bool IsValidAge(string ageString)
+        {
+            int age = -1;
+
+            Int32.TryParse(ageString, out age);
+            if (age < 0 && age > 130)
+            {
+                return false;
+            }
+            return true;
+        }
+        public static bool IsValidEthnicity(string c)
+        {
+            if(!c.Equals("B", StringComparison.InvariantCultureIgnoreCase) || !c.Equals("O", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return false;
+            }
+            return true;
+        }
+        public static bool IsValidGender(string genSring)
+        {
+            int gen = -1;
+
+            Int32.TryParse(genSring, out gen);
+            if (gen != 1 || gen!= 0)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
