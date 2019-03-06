@@ -33,8 +33,10 @@ namespace DepSystems
                 int lineCount = 0;
                 while(streamReader.Peek() > 0)
                 {
+                    // Track the line count for error messages
                     lineCount++;
                     var line = streamReader.ReadLine();
+                    // TODO: Move the replacement of whitespace around
                     var noWhiteSpaceLine = line.Replace(" ", string.Empty);
 
                     if(noWhiteSpaceLine.Length == 0)

@@ -95,7 +95,7 @@ namespace DepSystems.Controllers
             if (patientModel != null)
             {
                 PatientDetailsModel patientDetails = null;
-                if (patient.Details != null)
+                if (patientModel.Details != null)
                 {
                     patientDetails = PatientProcessor.LoadPatientDetails((int)patientModel.Details);
                 }

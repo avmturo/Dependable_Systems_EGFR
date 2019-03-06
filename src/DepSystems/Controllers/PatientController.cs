@@ -5,6 +5,7 @@ using DepSystems.Enums;
 using DepSystems.Models;
 using DataLibrary.Models;
 using DataLibrary.BusinessLogic;
+using System;
 
 namespace DepSystems.Controllers
 {
@@ -17,6 +18,17 @@ namespace DepSystems.Controllers
         [CustomValidate(UserType.Patient, routePath : @"/Patient")]
         public IActionResult Index()
         {
+            var details = SessionController.GetPatientDetails(HttpContext.Session);
+            if(details != null)
+            {
+                Calculation calculation = new Calculation
+                {
+                    Age = details.DateOfBirth.GetAge(),
+                    Gender = (Gender)details.Gender,
+                    Ethnicity = (Ethnicity)details.Ethnicity
+                };
+                return View(calculation);
+            }
             return View();
         }
 
@@ -60,7 +72,6 @@ namespace DepSystems.Controllers
         {
             PatientDetailsModel sessionDetails = SessionController.GetPatientDetails(HttpContext.Session);
             int result = UpdateDetails(patientDetails, sessionDetails);
-
 
             // Add validation
             // Insert details into db, either updating the details or creating a new row in the db

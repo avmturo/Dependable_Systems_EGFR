@@ -37,14 +37,6 @@ namespace DepSystems.Controllers
 			return View();
 		}
 
-		[HttpPost]
-		public IActionResult CreatePatient(Patient patient)
-		{
-			PatientProcessor.SavePatient(patient.NHSNumber, patient.Password);
-            ViewData["SuccessMessage"] = @"Patient @patient.NHSNumber was created successfully."; 
-            return View();
-		}
-
 		public IActionResult PatientDetails(int id)
 		{
 			var allPatients = PatientProcessor.LoadPatients();

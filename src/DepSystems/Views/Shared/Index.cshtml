@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Http
+@using DepSystems.Enums
+
 @model DepSystems.Models.Calculation
 @{
     ViewData["Title"] = "Home";
@@ -20,25 +22,19 @@
                 <!-- Gender -->
                 <div class="col-12 input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Gender</label>
+                        <label asp-for="Gender" class="input-group-text"></label>
                     </div>
-                    <select asp-for="Gender" class="custom-select" id="inputGroupSelect01">
-                        <option selected>Choose...</option>
-                        <option value="1">Female</option>
-                        <option value="2">Male</option>
-                    </select>
+                    <select asp-for="Gender" asp-items="Html.GetEnumSelectList(typeof (Gender))" class="custom-select"></select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
                 </div>
 
                 <!-- Ethnicity -->
                 <div class="col-12 input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect02">Ethnicity</label>
+                        <label asp-for="Ethnicity" class="input-group-text"></label>
                     </div>
-                    <select asp-for="Ethnicity" class="custom-select" id="inputGroupSelect02">
-                        <option selected>Choose...</option>
-                        <option value="1">Black</option>
-                        <option value="2">Other</option>
-                    </select>
+                    <select asp-for="Ethnicity" asp-items="Html.GetEnumSelectList(typeof (Ethnicity))" class="custom-select"></select>
+                    <span asp-validation-for="Ethnicity" class="text-danger"></span>
                 </div>
 
                 <!-- Creatine Level -->
@@ -56,7 +52,7 @@
             </div>
         </form>
     </div>
-    @if (Model != null)
+    @if (Model != null && ViewData.ModelState.IsValid)
     {
         <div class="col-12">
             <table class="table table-striped table-dark">
