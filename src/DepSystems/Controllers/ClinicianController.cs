@@ -58,13 +58,13 @@ namespace DepSystems.Controllers
             return View(viewName: "ImportPatients");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult ManualPatientCredentials(ManualPatientCredentials manualPatientCredentials)
-        {
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult ManualPatientCredentials(ManualPatientCredentials manualPatientCredentials)
+        //{
 
-            return View(viewName: "ImportPatients");
-        }
+        //    return View(viewName: "ImportPatients");
+        //}
 
 
 

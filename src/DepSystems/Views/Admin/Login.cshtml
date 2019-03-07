@@ -1,12 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@using DepSystems.Enums
-@model DepSystems.Models.LoginDetails
+﻿@model DepSystems.Models.Admin
 
-@{
-    Model.UserType = UserType.Admin;
-}
 
 <h4>Login</h4>
 <hr />
@@ -16,10 +9,10 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col-12 input-group mb-3">
                 <div class="input-group-prepend">
-                    <label asp-for="Id" class="input-group-text"></label>
+                    <label asp-for="Username" class="input-group-text"></label>
                 </div>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="col-12 input-group mb-3">
                 <div class="input-group-prepend">

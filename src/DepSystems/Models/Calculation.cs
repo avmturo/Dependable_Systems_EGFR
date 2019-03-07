@@ -6,18 +6,24 @@ namespace DepSystems.Models
 {
     public class Calculation
     {
-        [Required]
+        [Required(ErrorMessage = "Please provide an age")]
+        [Range(1, 130, ErrorMessage = "Please provide a valid age (1-130)")]
         public int Age { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please provide your ethnicity")]
         public Ethnicity Ethnicity { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please provide your gender")]
         public Gender Gender { get; set; }
 
-        [Required]
         // Add a max/min validation attribute
+        [Required(ErrorMessage = "Please provide a creatine value")]
+        [Display(Name = "Creatine")]
         public double CreatineLevel { get; set; }
+
+        public Calculation()
+        {
+        }
 
         public Calculation(int a, Ethnicity e, Gender g, double cl)
         {
@@ -26,6 +32,7 @@ namespace DepSystems.Models
             Gender = g;
             CreatineLevel = cl;
         }
+
         public double Calculate()
         {
             //eGFR  value  in  ml/min/1.73m2 = 
@@ -36,9 +43,8 @@ namespace DepSystems.Models
             double gen = 1 - ((int)Gender * 0.258);
 
             return 186 * Math.Pow(CreatineLevel / 88.4, -1.154) * Math.Pow(Age, -0.203) * gen * eth;
-
-
         }
+
         public static bool IsValidAge(string ageString)
         {
             int age = -1;
@@ -50,6 +56,7 @@ namespace DepSystems.Models
             }
             return true;
         }
+
         public static bool IsValidEthnicity(string c)
         {
             if(!c.Equals("B", StringComparison.InvariantCultureIgnoreCase) || !c.Equals("O", StringComparison.InvariantCultureIgnoreCase))
@@ -58,6 +65,7 @@ namespace DepSystems.Models
             }
             return true;
         }
+
         public static bool IsValidGender(string genSring)
         {
             int gen = -1;

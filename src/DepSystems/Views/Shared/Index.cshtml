@@ -12,11 +12,14 @@
         <form asp-action="Index" method="post">
             <div class="row">
                 <!-- Age -->
-                <div class="col-12 input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Age</span>
+                <div class="col-12 form-group mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <label asp-for="Age" class="control-label input-group-text" id="age-input"></label>
+                        </div>
+                        <input asp-for="Age" class="form-control" placeholder="Age" aria-label="Age" aria-describedby="age-input" />
                     </div>
-                    <input asp-for="Age" type="number" class="form-control" placeholder="Age" aria-label="Age" aria-describedby="basic-addon1">
+                    <span asp-validation-for="Age" class="text-danger"></span>
                 </div>
 
                 <!-- Gender -->
@@ -38,11 +41,14 @@
                 </div>
 
                 <!-- Creatine Level -->
-                <div class="col-12 input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon2">Creatine</span>
+                <div class="col-12 form-group mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon2">Creatine</span>
+                        </div>
+                        <input asp-for="CreatineLevel" type="number" class="form-control" placeholder="Creatine" aria-label="Creatine" aria-describedby="basic-addon2">
                     </div>
-                    <input asp-for="CreatineLevel" type="number" class="form-control" placeholder="Creatine" aria-label="Creatine" aria-describedby="basic-addon2">
+                    <span asp-validation-for="CreatineLevel" class="text-danger"></span>
                 </div>
 
                 <!-- Submission -->

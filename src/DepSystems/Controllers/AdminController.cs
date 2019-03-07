@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DataLibrary.BusinessLogic;
+using DataLibrary.Models;
 using DepSystems.Enums;
 using DepSystems.Filters;
 using Microsoft.AspNetCore.Mvc;
@@ -25,12 +23,22 @@ namespace DepSystems.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View(new LoginDetails());
+            return View();
         }
 
         [HttpPost]
         public IActionResult Login(Admin admin)
         {
+            AdminModel adminModel = AdminProcessor.AuthoriseAdmin(admin.Username, admin.Password);
+            if(adminModel != null)
+            {
+                SessionController.Login(HttpContext.Session, adminModel);
+                return View(viewName: "Index");
+                // Login
+                // return to the index view
+            }
+
+            ViewData["ErrorMessage"] = "Incorrect login details";
             return View();
         }
     }
