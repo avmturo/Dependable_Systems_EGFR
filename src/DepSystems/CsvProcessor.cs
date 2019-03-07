@@ -102,10 +102,10 @@ namespace DepSystems
             }
             return errorMessages;
         }
-        public static List<string> ReadBatchPatientData(IFormFile formFile, out Dictionary<string, Calculation> batchPatients)
+        public static List<string> ReadBatchPatientData(IFormFile formFile, out List<ListCalculations> batchPatients)
         {
             List<string> errorMessages = new List<string>();
-            batchPatients = new Dictionary<string, Calculation>();
+            batchPatients = new List<ListCalculations>();
 
             using (StreamReader streamReader = new StreamReader(formFile.OpenReadStream()))
             {
@@ -194,11 +194,9 @@ namespace DepSystems
                     }
                     double creatineLevel = 0;
                     Double.TryParse(commaSeparatedValues[3], out creatineLevel);
-                    Calculation addCalculation = new Calculation(age, ethnicity, gender, creatineLevel);
-                        
-                    batchPatients.Add(commaSeparatedValues[0], addCalculation);
-
-                }
+                    ListCalculations addCalculation = new ListCalculations(commaSeparatedValues[0], age, ethnicity, gender, creatineLevel);
+                      
+               }
             }
             return errorMessages;
         }

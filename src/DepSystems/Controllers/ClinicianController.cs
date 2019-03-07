@@ -58,6 +58,30 @@ namespace DepSystems.Controllers
             return View(viewName: "ImportPatients");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult BatchCalculation(BatchCalculation batchCalculation)
+        {
+            // if all goes well, redirect to import patients with a success message
+            // otherwise, r
+            if (!CsvProcessor.IsCsv(batchCalculation.File))
+            {
+                ViewData["ErrorMessage"] = "Could not upload patients, the file provided was not a CSV file.";
+                return View(viewName: "BatchCalculation");
+            }
+
+            var errorMessages = CsvProcessor.ReadBatchPatientData(batchCalculation.File, out List<ListCalculations> calculatedPatients);
+            if (errorMessages.Count != 0)
+            {
+                ViewData["ErrorMessages"] = errorMessages;
+            }
+            else
+            {
+                return View(viewName: "DisplayBatchCalculations", model: calculatedPatients);
+            }
+
+        }
+
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public IActionResult ManualPatientCredentials(ManualPatientCredentials manualPatientCredentials)
