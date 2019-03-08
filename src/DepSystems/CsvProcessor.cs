@@ -142,59 +142,64 @@ namespace DepSystems
                     bool valid = true;
                     foreach (var value in commaSeparatedValues)
                     {
-                        if (!value.All(c => char.IsLetterOrDigit(c)))
-                        {
-                            errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
-                            $"Non AlphaNumeric character found");
-                            valid = false;
-                            break;
-                        }
+                        //if (!value.All(c => char.IsLetterOrDigit(c)))
+                        //{
+                        //    errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
+                        //    $"Non AlphaNumeric character found");
+                        //   valid = false;
+                        //    break;
+                        //}
                     }
 
-                    if (!valid)
-                    {
-                        continue;
-                    }
+                    //if (!valid)
+                    //{
+                    //    continue;
+                    //}
 
-                    if (!Patient.IsValidNHSNumber(commaSeparatedValues[0]))
-                    {
-                        errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
-                            $"Patient NHS Number is not valid");
-                        continue;
-                    }
+                    //if (!Patient.IsValidNHSNumber(commaSeparatedValues[0]))
+                    //{
+                    //    errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
+                    //        $"Patient NHS Number is not valid");
+                    //    continue;
+                    //}
 
-                    if (!Calculation.IsValidEthnicity(commaSeparatedValues[2]))
-                    {
-                        errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
-                            $"Patient Ethnicity is not valid, use B or O");
+                    //if (!Calculation.IsValidEthnicity(commaSeparatedValues[2]))
+                    //{
+                        //errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
+                        //    $"Patient Ethnicity is not valid, use B or O");
                         if (commaSeparatedValues[2].Equals("B", StringComparison.InvariantCultureIgnoreCase))
                         {
                              ethnicityInt = 1;
                         }
-                        ethnicity = (Ethnicity)ethnicityInt;
-                        continue;
-
-                    }
-                    if (!Calculation.IsValidAge(commaSeparatedValues[4]))
+                    else
                     {
-                        errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
-                            $"Patient Age is invalid");
+                        ethnicityInt = 0;
+                    }
+                        ethnicity = (Ethnicity)ethnicityInt;
+                        //continue;
+
+                    //}
+                    //if (!Calculation.IsValidAge(commaSeparatedValues[3]))
+                    //{
+                        //errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
+                           // $"Patient Age is invalid");
                         
                         Int32.TryParse(commaSeparatedValues[4], out age);
-                        continue;
-                    }
-                    if (!Calculation.IsValidGender(commaSeparatedValues[1]))
-                    {
-                        errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
-                            $"Patient Age is invalid");
+                        //continue;
+                    //}
+                    //if (!Calculation.IsValidGender(commaSeparatedValues[1]))
+                    //{
+                    //    errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
+                    //        $"Patient Age is invalid");
                         int gen = 0;
                         Int32.TryParse(commaSeparatedValues[1], out gen);
                         gender = (Gender)gen;
-                        continue;
-                    }
-                    double creatineLevel = 0;
-                    Double.TryParse(commaSeparatedValues[3], out creatineLevel);
+                        //continue;
+                    //}
+                    double creatineLevel;
+                    Double.TryParse(commaSeparatedValues[4], out creatineLevel);
                     ListCalculations addCalculation = new ListCalculations(commaSeparatedValues[0], age, ethnicity, gender, creatineLevel);
+                    batchPatients.Add(addCalculation);
                       
                }
             }

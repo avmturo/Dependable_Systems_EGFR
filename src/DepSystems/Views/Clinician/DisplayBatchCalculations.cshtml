@@ -1,0 +1,54 @@
+﻿@using System.Collections.Generic;
+@{
+    ViewData["Title"] = "DisplayBatchClaulations";
+
+
+}
+@model List<DepSystems.Models.ListCalculations>
+<div class="row justify-content-center">
+    <div class="col-10 col-md-8 bg-light">
+        <h4 class="text-center">Batch Calculation Results</h4>
+        <table style="width:100%" border="1">
+            <tr>
+                <th>ID</th>
+                <th>Gender</th>
+                <th>Ethnicity</th>
+                <th>Age</th>
+                <th>EFGR Value</th>
+            </tr>
+            @for (int x = 1; x < Model.Count(); x++)
+            {
+                @if (@Model[x].Value > 200)
+                {
+                    <tr bgcolor="red">
+                        <td>@Model[x].NHSNumber</td>
+                        <td>@Model[x].Gender</td>
+                        <td>@Model[x].Ethnicity</td>
+                        <td>@Model[x].Age</td>
+                        <td>@Model[x].Value</td>
+                    </tr>
+
+                }
+                else
+                {
+                    <tr>
+                        <td>@Model[x].NHSNumber</td>
+                        <td>@Model[x].Gender</td>
+                        <td>@Model[x].Ethnicity</td>
+                        <td>@Model[x].Age</td>
+                        <td>@Model[x].Value</td>
+                    </tr>
+
+                }
+
+
+            }
+        </table>
+
+
+    </div>
+</div>
+
+
+
+

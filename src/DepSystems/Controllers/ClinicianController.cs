@@ -26,6 +26,12 @@ namespace DepSystems.Controllers
             return View();
         }
 
+        [CustomValidate(UserType.Clinician, "/Clinician/BatchCalculation")]
+        public IActionResult BatchCalculation()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult ImportPatientCredentials(ImportPatientCredentials importPatientCredentials)
@@ -60,27 +66,23 @@ namespace DepSystems.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult BatchCalculation(BatchCalculation batchCalculation)
+        public IActionResult DisplayBatchCalculations(BatchCalculation batchCalculation)
         {
             // if all goes well, redirect to import patients with a success message
             // otherwise, r
+
             if (!CsvProcessor.IsCsv(batchCalculation.File))
             {
                 ViewData["ErrorMessage"] = "Could not upload patients, the file provided was not a CSV file.";
                 return View(viewName: "BatchCalculation");
             }
-
             var errorMessages = CsvProcessor.ReadBatchPatientData(batchCalculation.File, out List<ListCalculations> calculatedPatients);
             if (errorMessages.Count != 0)
             {
                 ViewData["ErrorMessages"] = errorMessages;
             }
-            else
-            {
-                return View(viewName: "DisplayBatchCalculations", model: calculatedPatients);
-            }
-
-        }
+            return View(viewName: "DisplayBatchCalculations", model: calculatedPatients);
+                    }
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]
