@@ -97,7 +97,7 @@ using DepSystems.Utilities;
             WriteLiteral("\r\n<nav class=\"container navbar navbar-expand-lg navbar-light\">\r\n    <a class=\"navbar-brand\" href=\"#\">\r\n        ");
             EndContext();
             BeginContext(403, 93, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "ab16081c9ccc48208855d2e3cd1be8de", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "c1e0aacbbdf74b42bc6028784c9b5195", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -290,9 +290,9 @@ WriteAttributeValue("", 2176, Html.IsSelected("BatchCalculation", "Clinician", "
             BeginContext(2488, 12, true);
             WriteLiteral("            ");
             EndContext();
-            BeginContext(2247, 245, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "59d9f200abc64dc19c009df402d34103", async() => {
-                BeginContext(2286, 199, true);
+            BeginContext(2500, 245, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa65f9f9f6d34d6588edadb536ed9716", async() => {
+                BeginContext(2539, 199, true);
                 WriteLiteral("\r\n                <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"button\" data-toggle=\"modal\" data-target=\"#loginModal\">\r\n                    Login\r\n                </button>\r\n            ");
                 EndContext();
             }
@@ -323,9 +323,9 @@ WriteAttributeValue("", 2176, Html.IsSelected("BatchCalculation", "Clinician", "
             BeginContext(2783, 12, true);
             WriteLiteral("            ");
             EndContext();
-            BeginContext(2542, 205, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a89e0d12e5a34896896a9400b493fb72", async() => {
-                BeginContext(2626, 114, true);
+            BeginContext(2795, 205, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fb0f802999a1492b9cd4b15bc972390a", async() => {
+                BeginContext(2879, 114, true);
                 WriteLiteral("\r\n                <input type=\"submit\" class=\"btn btn-outline-danger my-2 my-sm-0\" value=\"Logout\" />\r\n            ");
                 EndContext();
             }
@@ -367,8 +367,8 @@ WriteAttributeValue("", 2176, Html.IsSelected("BatchCalculation", "Clinician", "
             BeginContext(3075, 4, true);
             WriteLiteral("    ");
             EndContext();
-            BeginContext(2826, 32, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "96b0ac54dc1c4f3082164f27e0f6aa75", async() => {
+            BeginContext(3079, 32, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "65a6b9b8479b448f85667871926970d3", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

@@ -18,9 +18,64 @@
             </tr>
             @for (int x = 1; x < Model.Count(); x++)
             {
-                @if (@Model[x].Value > 200)
+                @if (@Model[x].Value >= 90)
                 {
-                    <tr bgcolor="red">
+                    <tr bgcolor="#66ff33">
+                        <td>@Model[x].NHSNumber</td>
+                        <td>@Model[x].Gender</td>
+                        <td>@Model[x].Ethnicity</td>
+                        <td>@Model[x].Age</td>
+                        <td>@Model[x].Value</td>
+                    </tr>
+
+                }
+                else if (@Model[x].Value >= 60 && @Model[x].Value <= 89)
+                {
+                    <tr bgcolor="#99ff33">
+                        <td>@Model[x].NHSNumber</td>
+                        <td>@Model[x].Gender</td>
+                        <td>@Model[x].Ethnicity</td>
+                        <td>@Model[x].Age</td>
+                        <td>@Model[x].Value</td>
+                    </tr>
+
+                }
+                else if (@Model[x].Value >= 45 && @Model[x].Value <= 59)
+                {
+                    <tr bgcolor="#ffff00">
+                        <td>@Model[x].NHSNumber</td>
+                        <td>@Model[x].Gender</td>
+                        <td>@Model[x].Ethnicity</td>
+                        <td>@Model[x].Age</td>
+                        <td>@Model[x].Value</td>
+                    </tr>
+
+                }
+                else if (@Model[x].Value >= 30 && @Model[x].Value <= 44)
+                {
+                    <tr bgcolor="#ff9933">
+                        <td>@Model[x].NHSNumber</td>
+                        <td>@Model[x].Gender</td>
+                        <td>@Model[x].Ethnicity</td>
+                        <td>@Model[x].Age</td>
+                        <td>@Model[x].Value</td>
+                    </tr>
+
+                }
+                else if (@Model[x].Value >= 15 && @Model[x].Value <= 29)
+                {
+                    <tr bgcolor="#ff6600">
+                        <td>@Model[x].NHSNumber</td>
+                        <td>@Model[x].Gender</td>
+                        <td>@Model[x].Ethnicity</td>
+                        <td>@Model[x].Age</td>
+                        <td>@Model[x].Value</td>
+                    </tr>
+
+                }
+                else if (@Model[x].Value > 15)
+                {
+                    <tr bgcolor="#cc0000">
                         <td>@Model[x].NHSNumber</td>
                         <td>@Model[x].Gender</td>
                         <td>@Model[x].Ethnicity</td>
@@ -44,9 +99,10 @@
 
             }
         </table>
-
+        <partial name="_LiverFunctionalityKeyPartial" />
 
     </div>
+
 </div>
 
 

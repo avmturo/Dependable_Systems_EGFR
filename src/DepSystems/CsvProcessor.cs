@@ -184,7 +184,7 @@ namespace DepSystems
             return errorMessages;
         }
 
-        public static List<string> ReadBatchPatientData(IFormFile formFile, out Dictionary<string, Calculation> batchPatients)
+        public static List<string> ReadBatchPatientData(IFormFile formFile, out List<ListCalculations> batchPatients)
         {
             List<string> errorMessages = new List<string>();
             batchPatients = new List<ListCalculations>();
