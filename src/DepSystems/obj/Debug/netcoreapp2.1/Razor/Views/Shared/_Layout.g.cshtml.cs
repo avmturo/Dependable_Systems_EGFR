@@ -13,12 +13,12 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
-#line 1 "C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\_ViewImports.cshtml"
+#line 1 "C:\Users\avmtu\OneDrive\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\_ViewImports.cshtml"
 using DepSystems;
 
 #line default
 #line hidden
-#line 2 "C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\_ViewImports.cshtml"
+#line 2 "C:\Users\avmtu\OneDrive\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\_ViewImports.cshtml"
 using DepSystems.Models;
 
 #line default
@@ -90,7 +90,7 @@ using DepSystems.Models;
                 WriteLiteral("\r\n    <!-- Required meta tags -->\r\n    <meta charset=\"utf-8\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <title>");
                 EndContext();
                 BeginContext(186, 17, false);
-#line 7 "C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\Shared\_Layout.cshtml"
+#line 7 "C:\Users\avmtu\OneDrive\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\Shared\_Layout.cshtml"
       Write(ViewData["Title"]);
 
 #line default
@@ -173,9 +173,6 @@ using DepSystems.Models;
                     BeginContext(751, 283, false);
                     __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b6b293410edd42a496a79764fc1c31c0", async() => {
                     }
-                    );
-                    __Microsoft_AspNetCore_Mvc_TagHelpers_LinkTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper>();
-                    __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_LinkTagHelper);
                     __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
                     __Microsoft_AspNetCore_Mvc_TagHelpers_LinkTagHelper.Href = (string)__tagHelperAttribute_4.Value;
                     __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_4);
@@ -209,7 +206,7 @@ using DepSystems.Models;
                     __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
                     __Microsoft_AspNetCore_Mvc_TagHelpers_LinkTagHelper.Href = (string)__tagHelperAttribute_9.Value;
                     __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_9);
-#line 23 "C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\Shared\_Layout.cshtml"
+#line 23 "C:\Users\avmtu\OneDrive\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\Shared\_Layout.cshtml"
 __Microsoft_AspNetCore_Mvc_TagHelpers_LinkTagHelper.AppendVersion = true;
 
 #line default
@@ -286,7 +283,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LinkTagHelper.AppendVersion = true;
                 WriteLiteral("        ");
                 EndContext();
                 BeginContext(1309, 12, false);
-#line 30 "C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\Shared\_Layout.cshtml"
+#line 30 "C:\Users\avmtu\OneDrive\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\Shared\_Layout.cshtml"
    Write(RenderBody());
 
 #line default
@@ -316,6 +313,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LinkTagHelper.AppendVersion = true;
                 EndContext();
                 BeginContext(1404, 333, false);
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f743df420c4f49ce8058ed7bde3fe0b3", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09ab9456b4fa4c529c611547b83f336a", async() => {
                     BeginContext(1722, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
@@ -344,6 +342,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LinkTagHelper.AppendVersion = true;
                 EndContext();
                 BeginContext(1827, 381, false);
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "23dd9c492a7640c88450268bf6e18e95", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b40e07064ff4cc3a975fe6794986c42", async() => {
                     BeginContext(2193, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
@@ -383,7 +382,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LinkTagHelper.AppendVersion = true;
                 __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper);
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper.Src = (string)__tagHelperAttribute_22.Value;
                 __tagHelperExecutionContext.AddTagHelperAttribute(__tagHelperAttribute_22);
-#line 57 "C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\Shared\_Layout.cshtml"
+#line 57 "C:\Users\avmtu\OneDrive\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\Shared\_Layout.cshtml"
 __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper.AppendVersion = true;
 
 #line default

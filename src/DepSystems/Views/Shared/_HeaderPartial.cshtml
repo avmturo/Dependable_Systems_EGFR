@@ -41,6 +41,9 @@
                 <li class="@Html.IsSelected("ImportPatients", "Clinician", "active") nav-item">
                     @Html.ActionLink("Upload Patients", "ImportPatients", "Clinician", null, new { @class = "nav-link" })
                 </li>
+                <li class="@Html.IsSelected("BatchCalculation", "Clinician", "active") nav-item">
+                    @Html.ActionLink("Run Batch Calulations", "BatchCalculation", "Clinician", null, new { @class = "nav-link" })
+                </li>
             }
         </ul>
         @if (loggedInUser == UserType.None)
