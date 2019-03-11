@@ -1,0 +1,8 @@
+﻿@model Tuple<bool, string>
+@{ 
+    string statusClass = Model.Item1 ? "text-success" : "text-danger";
+}
+
+<div class="@statusClass" data-success="@Model.Item1">
+    @Model.Item2
+</div>

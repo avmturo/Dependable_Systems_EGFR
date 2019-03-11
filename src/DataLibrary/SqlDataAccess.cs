@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using Dapper;
 using DataLibrary.Models;
+using System.Transactions;
 
 namespace DataLibrary
 {
@@ -103,6 +104,38 @@ namespace DataLibrary
             }
         }
 
+        public static int SaveList<T>(string sql, List<T> data)
+        {
+            int rowsAffected = 0;
+
+            if(data != null && data.Count != 0)
+            {
+                using (IDbConnection dbConnection = new SqlConnection(ConnectionString()))
+                {
+                    dbConnection.Open();
+                    using (var transaction = dbConnection.BeginTransaction())
+                    {
+                        try
+                        {
+                            rowsAffected = dbConnection.Execute(sql, data, transaction: transaction);
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            // Unique Index constraint has been violated
+                            if (ex.GetBaseException().GetType() == typeof(SqlException))
+                            {
+                                transaction.Rollback();
+                            }
+                        }
+                    }
+                    dbConnection.Close();
+                }
+            }
+
+            return rowsAffected;
+        }
+
         public static int SaveReturnId<T>(string sql, T data)
         {
             //https://stackoverflow.com/questions/8270205/how-do-i-perform-an-insert-and-return-inserted-identity-with-dapper
@@ -112,6 +145,11 @@ namespace DataLibrary
             {
                 return dbConnection.Query<int>(sql, data).Single();
             }
+        }
+
+        public static int Execute<T>(string sql, T data)
+        {
+            return Save<T>(sql, data);
         }
     }
 }

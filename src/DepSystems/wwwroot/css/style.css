@@ -17,3 +17,14 @@ footer
 {
 	background-color: #e9ecef;
 }
+
+#clinician-credentials tr:nth-child(even)
+{
+    background-color: rgba(0, 0, 0, 0.13);
+}
+
+#clinician-credentials td 
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}

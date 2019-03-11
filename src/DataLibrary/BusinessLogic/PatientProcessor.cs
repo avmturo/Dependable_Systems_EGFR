@@ -6,12 +6,6 @@ namespace DataLibrary.BusinessLogic
 {
     public static class PatientProcessor
     {
-        // Based on CRUD
-        // Create - Needed
-        // Read - Needed
-        // Update - ???
-        // Delete - ???
-
         public static int SavePatient(string nhsNumber, string password)
         {
             PatientModel data = new PatientModel

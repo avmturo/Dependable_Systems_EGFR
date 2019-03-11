@@ -4,3 +4,7 @@
 	[HCPId] NVARCHAR(50) NOT NULL,
 	[Password] NVARCHAR(50) NOT NULL
 )
+
+GO
+
+CREATE UNIQUE INDEX [Unique_HCPId] ON [dbo].[Clinician] ([HCPId])

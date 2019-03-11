@@ -102,6 +102,88 @@ namespace DepSystems
             }
             return errorMessages;
         }
+
+        public static List<string> GetClinicianCredentials(IFormFile formFile, out List<Clinician> clinicians)
+        {
+            List<string> errorMessages = new List<string>();
+            clinicians = new List<Clinician>();
+
+            using (StreamReader streamReader = new StreamReader(formFile.OpenReadStream()))
+            {
+                int lineCount = 0;
+                while (streamReader.Peek() > 0)
+                {
+                    // Track the line count for error messages
+                    lineCount++;
+                    var line = streamReader.ReadLine();
+                    // TODO: Move the replacement of whitespace around
+                    var noWhiteSpaceLine = line.Replace(" ", string.Empty);
+
+                    // If the line was only white spaces, the string will now be of length 0
+                    if (noWhiteSpaceLine.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    var commaSeparatedValues = noWhiteSpaceLine.Split(',');
+                    if (commaSeparatedValues.Length == 1)
+                    {
+                        errorMessages.Add($"Error Importing Clinician at Line {lineCount}. \n" +
+                            $"No comma found");
+                        continue;
+                    }
+                    if (commaSeparatedValues.Length > 2)
+                    {
+                        errorMessages.Add($"Error Importing Clinician at Line {lineCount}. \n" +
+                            $"Too many commas");
+                        continue;
+                    }
+
+                    bool valid = true;
+                    foreach (var value in commaSeparatedValues)
+                    {
+                        if (!value.All(c => char.IsLetterOrDigit(c)))
+                        {
+                            errorMessages.Add($"Error Importing Clinician at Line {lineCount}. \n " +
+                            $"Non AlphaNumeric character found");
+                            valid = false;
+                            break;
+                        }
+                    }
+
+                    if (!valid)
+                    {
+                        continue;
+                    }
+
+                    if (!Clinician.IsValidHCPId(commaSeparatedValues[0]))
+                    {
+                        errorMessages.Add($"Error Importing Clinician at Line {lineCount}. \n " +
+                            $"Clinician HCP ID is not valid");
+                        continue;
+                    }
+
+                    if (!Clinician.IsValidPassword(commaSeparatedValues[1]))
+                    {
+                        errorMessages.Add($"Error Importing Clinician at Line {lineCount}. \n " +
+                            $"Clinician Password is not valid");
+                        continue;
+                    }
+
+                    clinicians.Add(
+                        new Clinician
+                        {
+                            HCPId = commaSeparatedValues[0],
+                            ClinicianPassword = commaSeparatedValues[1]
+                        }
+                    );
+
+                }
+            }
+
+            return errorMessages;
+        }
+
         public static List<string> ReadBatchPatientData(IFormFile formFile, out Dictionary<string, Calculation> batchPatients)
         {
             List<string> errorMessages = new List<string>();

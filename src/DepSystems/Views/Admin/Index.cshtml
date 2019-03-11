@@ -1,0 +1,71 @@
+﻿@using DepSystems.Models;
+@{
+    ViewData["Title"] = "Manage Clinicians";
+}
+@model ClinicianManagerModel
+
+<div class="row justify-content-center bg-dark py-5">
+    <div class="col-12">
+        <h2 class="text-white text-center">Manage Clinicians</h2>
+        <hr />
+    </div>
+
+    <!-- Import Clinician File -->
+    <div class="col-6">
+        <partial name="_ImportClinicianCredentialsPartial" model="new ImportClinicianCredentials()" />
+    </div>
+
+    <!-- Reset BS Grid -->
+    <div class="w-100"></div>
+
+    @if (Model.Clinicians != null)
+    {
+        <div class="col-8 pt-5">
+
+            <div class="row justify-content-center bg-light border border-dark rounded pt-3">
+                <h4 class="col-6 text-center mt-3">Clinicians</h4>
+                <input type="text" id="clinician-search" class="col-4" placeholder="Search by ID..." />
+
+                <!-- Reset BS Grid -->
+                <div class="w-100"></div>
+
+                <!-- Used to display message from Ajax POST -->
+                <div id="delete-message" class="col-8"></div>
+
+                <!-- Reset BS Grid -->
+                <div class="w-100"></div>
+
+                <table id="clinician-credentials" class="col-10 border mt-2 jumbotron text-center">
+                    <tr class="bg-primary text-white">
+                        <th>HCP ID</th>
+                        <th>Password</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+
+
+                    @foreach (var clinician in Model.Clinicians)
+                    {
+                        <tr class="hello">
+                            <td class="hcp-id">@clinician.HCPId</td>
+                            <td>@clinician.ClinicianPassword</td>
+                            <td>
+                                <button class="edit-clinician btn btn-info">Edit</button>
+                            </td>
+                            <td>
+                                <form class="delete-clinician" data-hcp-id="@clinician.HCPId">
+                                    <input type="submit" class="delete-clinician btn btn-danger" value="X" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts {
+<script src="~/js/admin.js"
+        asp-append-version="true">
+</script>
+}

@@ -7,7 +7,7 @@ namespace DepSystems.Models
     public class Calculation
     {
         [Required(ErrorMessage = "Please provide an age")]
-        [Range(1, 130, ErrorMessage = "Please provide a valid age (1-130)")]
+        [Range(18, 110, ErrorMessage = "Please provide a valid age (18-110)")]
         public int Age { get; set; }
 
         [Required(ErrorMessage = "Please provide your ethnicity")]

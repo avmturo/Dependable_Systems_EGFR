@@ -159,7 +159,6 @@ C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\DepSystems.TagHelpers.input.cache
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\DepSystems.TagHelpers.output.cache
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\DepSystems.RazorCoreGenerate.cache
-C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Admin\CreateClinician.g.cshtml.cs
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Login.g.cshtml.cs
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Session\Login.g.cshtml.cs
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Details.g.cshtml.cs
@@ -190,3 +189,6 @@ H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Ra
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Clinician\_ManualPatientCredentialsPartial.g.cshtml.cs
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LoginClinician.g.cshtml.cs
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LoginPatient.g.cshtml.cs
+C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Index.g.cshtml.cs
+C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Admin\_ImportClinicianCredentialsPartial.g.cshtml.cs
+C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_StatusMessagePartial.g.cshtml.cs

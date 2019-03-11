@@ -14,12 +14,21 @@ namespace DepSystems.Controllers
         /// Displays the landing page that a clinician sees when logging in
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         [CustomValidate(UserType.Clinician, "/Clinician")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(Calculation calculation)
+        {
+            return View(calculation);
+        }
+
+        [HttpGet]
         [CustomValidate(UserType.Clinician, "/Clinician/ImportPatients")]
         public IActionResult ImportPatients()
         {

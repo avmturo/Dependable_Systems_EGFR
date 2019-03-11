@@ -13,7 +13,6 @@ namespace DepSystems.Controllers
         private const string LOGIN_STATUS = "LOGIN_STATUS";
         private const string LOGIN_ID = "LOGIN_ID";
         private const string PATIENT_DETAILS = "PATIENT_DETAILS";
-        private const string ADMIN_DETAILS = "ADMIN_DETAILS";
 
 
         public static void Login(ISession session, PatientModel patient, PatientDetailsModel patientDetails)
@@ -78,8 +77,7 @@ namespace DepSystems.Controllers
                 return null;
             }
 
-            byte[] patientBytes;
-            if(!session.TryGetValue(PATIENT_DETAILS, out patientBytes))
+            if(!session.TryGetValue(PATIENT_DETAILS, out byte[] patientBytes))
             {
                 return null;
             }
