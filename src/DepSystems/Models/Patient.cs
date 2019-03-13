@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using DataLibrary.Models;
 using DepSystems.Enums;
@@ -12,14 +13,14 @@ namespace DepSystems.Models
 
         [Required]
         [Display(Name = "NHS Number")]
-        [MaxLength(PatientModel.NHS_NUMBER_LENGTH, ErrorMessage = "The NHS Number you provided is too short.")]
-        [MinLength(PatientModel.NHS_NUMBER_LENGTH, ErrorMessage = "The NHS Number you provided is too long.")]
+        [MinLength(PatientModel.NHS_NUMBER_LENGTH, ErrorMessage = "The NHS Number you provided is too short.")]
+        [MaxLength(PatientModel.NHS_NUMBER_LENGTH, ErrorMessage = "The NHS Number you provided is too long.")]
         public string NHSNumber { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [MaxLength(PatientModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too short.")]
-        [MinLength(PatientModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too long.")]
+        [MinLength(PatientModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too short.")]
+        [MaxLength(PatientModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too long.")]
         public string Password { get; set; }
 
         public PatientDetails Details { get; set; }
@@ -27,13 +28,51 @@ namespace DepSystems.Models
         public static bool IsValidNHSNumber(string nhsNumber)
         {
             // Need to check if all nhs numbers begin with a 2?
-            return nhsNumber.Length == PatientModel.NHS_NUMBER_LENGTH;
+            return nhsNumber.IsNumeric() && nhsNumber.Length == PatientModel.NHS_NUMBER_LENGTH;
         }
 
         public static bool IsValidPassord(string password)
         {
             // Need to check if the rule for patient passwords is that they all start with a p?
             return password.Length == PatientModel.PASSWORD_LENGTH;
+        }
+
+        public static Patient Convert(PatientModel patientModel)
+        {
+            return new Patient
+            {
+                NHSNumber = patientModel.NHSNumber,
+                Password = patientModel.Password
+            };
+        }
+
+        public static PatientModel Convert(Patient patient)
+        {
+            return new PatientModel
+            {
+                NHSNumber = patient.NHSNumber,
+                Password = patient.Password
+            };
+        }
+
+        public static List<Patient> Convert(List<PatientModel> models)
+        {
+            List<Patient> patients = new List<Patient>();
+            foreach(var model in models)
+            {
+                patients.Add(Convert(model));
+            }
+            return patients;
+        }
+
+        public static List<PatientModel> Convert(List<Patient> patients)
+        {
+            List<PatientModel> models = new List<PatientModel>();
+            foreach(var patient in patients)
+            {
+                models.Add(Convert(patient));
+            }
+            return models;
         }
     }
 

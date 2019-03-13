@@ -32,29 +32,24 @@ namespace DepSystems.Controllers
 			return View(postedCalculation);
 		}
 
-		public IActionResult CreatePatient()
-		{
-			return View();
-		}
-
-		public IActionResult PatientDetails(int id)
-		{
-			var allPatients = PatientProcessor.LoadPatients();
-			Patient patient;
-			if (allPatients.Count == 0)
-			{
-				patient = new Patient();
-			}
-			else
-			{
-				patient = new Patient()
-				{
-					NHSNumber = allPatients[0].NHSNumber,
-					Password = allPatients[0].Password,
-				};
-			}
-			return View(patient);
-		}
+		//public IActionResult PatientDetails(int id)
+		//{
+		//	var allPatients = PatientProcessor.LoadPatients();
+		//	Patient patient;
+		//	if (allPatients.Count == 0)
+		//	{
+		//		patient = new Patient();
+		//	}
+		//	else
+		//	{
+		//		patient = new Patient()
+		//		{
+		//			NHSNumber = allPatients[0].NHSNumber,
+		//			Password = allPatients[0].Password,
+		//		};
+		//	}
+		//	return View(patient);
+		//}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()

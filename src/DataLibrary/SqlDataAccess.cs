@@ -47,7 +47,12 @@ namespace DataLibrary
         {
             using (IDbConnection dbConnection = new SqlConnection(ConnectionString()))
             {
-                return dbConnection.Query<T>(sql, data).Single();
+                var result = dbConnection.Query<T>(sql, data);
+                if(result.Count() == 0)
+                {
+                    return default(T);
+                }
+                return result.Single();
             }
         }
 

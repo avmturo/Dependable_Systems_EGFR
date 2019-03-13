@@ -3,6 +3,7 @@ using DepSystems.Filters;
 using DepSystems.Enums;
 using DepSystems.Models;
 using System.Collections.Generic;
+using DataLibrary.BusinessLogic;
 
 namespace DepSystems.Controllers
 {
@@ -53,23 +54,25 @@ namespace DepSystems.Controllers
                 return View(viewName: "ImportPatients");
             }
 
-            var errorMessages = CsvProcessor.GetPatientCredentials(importPatientCredentials.File, out List<Patient> parsedPatients);
-            if(errorMessages.Count != 0)
-            {
-                ViewData["ErrorMessages"] = errorMessages;
-            }
+            List<string> errorMessages = new List<string>();
+            List<Patient> patients = CsvProcessor.ReadPatients(importPatientCredentials.File, errorMessages);
 
             // No patients parsed then return with errors. If there are patients parsed but the user does not want to upload
             // if there are errors, then simply return with errors
-            if(parsedPatients.Count == 0 || !importPatientCredentials.UploadWithErrors)
+            if(patients.Count == 0 || (errorMessages.Count > 0 && !importPatientCredentials.UploadWithErrors))
             {
                 ViewData["ErrorMessage"] = "No patients were uploaded, check the file matches the format required.";
                 return View(viewName: "ImportPatients");
             }
 
-            // TODO: Update the database
+            int successfulInserts = PatientProcessor.SavePatients(Patient.Convert(patients), errorMessages);
 
-            ViewData["SuccessMessage"] = $"{parsedPatients.Count} Patients were uploaded successfully.";
+            if(errorMessages.Count != 0)
+            {
+                ViewData["ErrorMessages"] = errorMessages;
+            }
+
+            ViewData["SuccessMessage"] = $"{successfulInserts} Patients were uploaded successfully.";
             return View(viewName: "ImportPatients");
         }
 
@@ -91,7 +94,7 @@ namespace DepSystems.Controllers
                 ViewData["ErrorMessages"] = errorMessages;
             }
             return View(viewName: "DisplayBatchCalculations", model: calculatedPatients);
-                    }
+        }
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]
@@ -100,8 +103,6 @@ namespace DepSystems.Controllers
 
         //    return View(viewName: "ImportPatients");
         //}
-
-
 
         [CustomValidate(UserType.Clinician, "/Clinician/CalculateMultiple")]
         public IActionResult CalculateMultiple()

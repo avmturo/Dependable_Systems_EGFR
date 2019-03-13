@@ -14,7 +14,6 @@ namespace DepSystems.Controllers
         private const string LOGIN_ID = "LOGIN_ID";
         private const string PATIENT_DETAILS = "PATIENT_DETAILS";
 
-
         public static void Login(ISession session, PatientModel patient, PatientDetailsModel patientDetails)
         {
             session.Set(LOGIN_STATUS, new byte[] { (byte)UserType.Patient } );
@@ -103,7 +102,7 @@ namespace DepSystems.Controllers
             }
 
             ViewData["ErrorMessage"] = "Your login credentials did not match our records. Please try again.";
-            return Login(redirect: null);
+            return View(viewName: "Login");
         }
 
         [HttpPost]
@@ -118,7 +117,7 @@ namespace DepSystems.Controllers
             }
 
             ViewData["ErrorMessage"] = "Your login credentials did not match our records. Please try again.";
-            return Login(redirect: null);
+            return View(viewName: "Login");
         }
 
         [HttpGet]
@@ -127,7 +126,6 @@ namespace DepSystems.Controllers
             if(redirect != null)
             {
                 ViewData["ErrorMessage"] = "You must be logged in to view that.";
-                ViewData["Redirect"] = (string)redirect;
             }
             return View();
         }

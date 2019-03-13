@@ -23,7 +23,7 @@ namespace DepSystems.Controllers
             //Clinician
             ClinicianManagerModel clinicianManagerModel = new ClinicianManagerModel
             {
-                Clinicians = ConvertModels(ClinicianProcessor.GetAllClinicians()),
+                Clinicians = Clinician.Convert(ClinicianProcessor.GetAllClinicians()),
             };
 
             return View(clinicianManagerModel);
@@ -46,27 +46,27 @@ namespace DepSystems.Controllers
             if(clinicianCredentials.File == null)
             {
                 ViewData["ErrorMessage"] = "Could not upload clinicians, no file was provided.";
-                clinicianManagerModel.Clinicians = ConvertModels(ClinicianProcessor.GetAllClinicians());
+                clinicianManagerModel.Clinicians = Clinician.Convert(ClinicianProcessor.GetAllClinicians());
                 return View(clinicianManagerModel);
             }
 
             if (!CsvProcessor.IsCsv(clinicianCredentials.File))
             {
                 ViewData["ErrorMessage"] = "Could not upload clinicians, the file provided was not a CSV file.";
-                clinicianManagerModel.Clinicians = ConvertModels(ClinicianProcessor.GetAllClinicians());
+                clinicianManagerModel.Clinicians = Clinician.Convert(ClinicianProcessor.GetAllClinicians());
                 return View(clinicianManagerModel);
             }
 
             var errorMessages = CsvProcessor.GetClinicianCredentials(clinicianCredentials.File, out List<Clinician> clinicians);
 
-            if(clinicians.Count == 0 && !clinicianCredentials.UploadWithErrors)
+            if(clinicians.Count == 0 || (errorMessages.Count > 0 && !clinicianCredentials.UploadWithErrors))
             {
                 ViewData["ErrorMessage"] = "No clinicians were uploaded, check the file matches the format required.";
-                clinicianManagerModel.Clinicians = ConvertModels(ClinicianProcessor.GetAllClinicians());
+                clinicianManagerModel.Clinicians = Clinician.Convert(ClinicianProcessor.GetAllClinicians());
                 return View(clinicianManagerModel);
             }
 
-            int successfulInserts = ClinicianProcessor.SaveClinicians(ConvertToModels(clinicians), errorMessages);
+            int successfulInserts = ClinicianProcessor.SaveClinicians(Clinician.Convert(clinicians), errorMessages);
 
             if(errorMessages.Count != 0)
             {
@@ -74,7 +74,7 @@ namespace DepSystems.Controllers
             }
 
             ViewData["SuccessMessage"] = $"{successfulInserts} Clinicians were uploaded successfully.";
-            clinicianManagerModel.Clinicians = ConvertModels(ClinicianProcessor.GetAllClinicians());
+            clinicianManagerModel.Clinicians = Clinician.Convert(ClinicianProcessor.GetAllClinicians());
             return View(clinicianManagerModel);
         }
 
@@ -117,28 +117,6 @@ namespace DepSystems.Controllers
 
             ViewData["ErrorMessage"] = "Incorrect login details";
             return View();
-        }
-
-        private List<Clinician> ConvertModels(List<ClinicianModel> models)
-        {
-            List<Clinician> clinicians = new List<Clinician>();
-            foreach(var clinicianModel in models)
-            {
-                clinicians.Add(Clinician.Convert(clinicianModel));
-            }
-
-            return clinicians;
-        }
-
-        private List<ClinicianModel> ConvertToModels(List<Clinician> clinicians)
-        {
-            List<ClinicianModel> models = new List<ClinicianModel>();
-            foreach(var clinician in clinicians)
-            {
-                models.Add(Clinician.Convert(clinician));
-            }
-
-            return models;
         }
     }
 }

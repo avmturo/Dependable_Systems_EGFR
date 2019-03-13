@@ -24,83 +24,15 @@ namespace DepSystems
                 && formFile.FileName.Substring(length - extensionLength) == extension;
         }
 
-        public static List<string> GetPatientCredentials(IFormFile formFile, out List<Patient> patients)
+        public static List<Patient> ReadPatients(IFormFile formFile, List<string> errorMessages)
         {
-            List<string> errorMessages = new List<string>();
-            patients = new List<Patient>();
+            List<Patient> patients = new List<Patient>();
 
-            using (StreamReader streamReader = new StreamReader(formFile.OpenReadStream()))
+            ParseFile(formFile, (patientLine, lineNumber) =>
             {
-                int lineCount = 0;
-                while(streamReader.Peek() > 0)
-                {
-                    // Track the line count for error messages
-                    lineCount++;
-                    var line = streamReader.ReadLine();
-                    // TODO: Move the replacement of whitespace around
-                    var noWhiteSpaceLine = line.Replace(" ", string.Empty);
-
-                    if(noWhiteSpaceLine.Length == 0)
-                    {
-                        continue;
-                    }
-
-                    var commaSeparatedValues = noWhiteSpaceLine.Split(',');
-                    if(commaSeparatedValues.Length == 1)
-                    {
-                        errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n" +
-                            $"No comma found");
-                        continue;
-                    }
-                    if(commaSeparatedValues.Length > 2)
-                    {
-                        errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n" +
-                            $"Too many commas");
-                        continue;
-                    }
-
-                    bool valid = true;
-                    foreach(var value in commaSeparatedValues)
-                    {
-                        if(!value.All(c=> char.IsLetterOrDigit(c)))
-                        {
-                            errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
-                            $"Non AlphaNumeric character found");
-                            valid = false;
-                            break;
-                        }
-                    }
-
-                    if(!valid)
-                    {
-                        continue;
-                    }
-
-                    if(!Patient.IsValidNHSNumber(commaSeparatedValues[0]))
-                    {
-                        errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
-                            $"Patient NHS Number is not valid");
-                        continue;
-                    }
-
-                    if(!Patient.IsValidPassord(commaSeparatedValues[1]))
-                    {
-                        errorMessages.Add($"Error Importing Patient at Line {lineCount}. \n " +
-                            $"Patient Password is not valid");
-                        continue;
-                    }
-
-                    patients.Add(
-                        new Patient
-                        {
-                            NHSNumber = commaSeparatedValues[0],
-                            Password = commaSeparatedValues[1]
-                        }
-                    );
-
-                }
-            }
-            return errorMessages;
+                ParsePatientLine(patientLine, lineNumber, errorMessages, patients);
+            });
+            return patients;
         }
 
         public static List<string> GetClinicianCredentials(IFormFile formFile, out List<Clinician> clinicians)
@@ -184,7 +116,7 @@ namespace DepSystems
             return errorMessages;
         }
 
-        public static List<string> ReadBatchPatientData(IFormFile formFile, out Dictionary<string, Calculation> batchPatients)
+        public static List<string> ReadBatchPatientData(IFormFile formFile, out List<ListCalculations> batchPatients)
         {
             List<string> errorMessages = new List<string>();
             batchPatients = new List<ListCalculations>();
@@ -286,6 +218,68 @@ namespace DepSystems
                }
             }
             return errorMessages;
+        }
+
+        private static void ParseFile(IFormFile formFile, Action<string, int> lineParser)
+        {
+            using (StreamReader streamReader = new StreamReader(formFile.OpenReadStream()))
+            {
+                int lineCount = 0;
+
+                // While there is a character to read
+                while (streamReader.Peek() > 0)
+                {
+                    ++lineCount; // Track the line count
+                    string line = streamReader.ReadLine();
+                    lineParser(line, lineCount);
+                }
+            }
+        }
+
+        private static void ParsePatientLine(string patientLine, int lineNumber, List<string> errorMessages, List<Patient> patients)
+        {
+            string patientLineWithoutWhiteSpace = patientLine.Replace(" ", string.Empty);
+
+            if (patientLineWithoutWhiteSpace.Length > 0)
+            {
+                string[] CSVs = patientLineWithoutWhiteSpace.Split(',');
+
+                if (CSVs.Length == 1)
+                {
+                    errorMessages.Add($"Error Importing Patient at Line {lineNumber}. \n" +
+                        $"No comma found");
+                    return;
+                }
+
+                if (CSVs.Length > 2)
+                {
+                    errorMessages.Add($"Error Importing Patient at Line {lineNumber}. \n" +
+                        $"Too many commas");
+                    return;
+                }
+
+                if (!Patient.IsValidNHSNumber(CSVs[0]))
+                {
+                    errorMessages.Add($"Error Importing Patient at Line {lineNumber}. \n " +
+                        $"Patient NHS Number is not valid");
+                    return;
+                }
+
+                if (!Patient.IsValidPassord(CSVs[1]))
+                {
+                    errorMessages.Add($"Error Importing Patient at Line {lineNumber}. \n " +
+                        $"Patient Password is not valid");
+                    return;
+                }
+
+                patients.Add(
+                    new Patient
+                    {
+                        NHSNumber = CSVs[0],
+                        Password = CSVs[1]
+                    }
+                );
+            }
         }
     }
 }

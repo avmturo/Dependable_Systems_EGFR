@@ -22,6 +22,20 @@ namespace DataLibrary.BusinessLogic
             );
         }
 
+        public static int SavePatients(List<PatientModel> patientModels, List<string> errorMessages)
+        {
+            string sqlStatement = @"INSERT into dbo.Patient (NHSNumber, Password)
+                    values (@NHSNumber, @Password)";
+
+            int successfulInserts = SqlDataAccess.SaveList<PatientModel>(sqlStatement, patientModels);
+            if (successfulInserts != patientModels.Count)
+            {
+                errorMessages.Add("Error storing the provided Patient credentials, all changes were reverted. \nCheck that the NHS Number's provided are unique.");
+            }
+
+            return successfulInserts;
+        }
+
         public static PatientModel LoadPatient(int patientId)
         {
             return SqlDataAccess.LoadSingle<PatientModel>

@@ -1,20 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using DataLibrary.Models;
 
 namespace DepSystems.Models
 {
     public class Clinician
     {
-        [Required]
+        [Required(ErrorMessage = "Please provide your HCP ID.")]
         [Display(Name = "HCP ID")]
-        [MaxLength(ClinicianModel.HCP_LENGTH, ErrorMessage = "The HCP ID you provided is too short.")]
-        [MinLength(ClinicianModel.HCP_LENGTH, ErrorMessage = "The HCP ID you provided is too long.")]
+        [MinLength(ClinicianModel.HCP_LENGTH, ErrorMessage = "The HCP ID you provided is too short.")]
+        [MaxLength(ClinicianModel.HCP_LENGTH, ErrorMessage = "The HCP ID you provided is too long.")]
         public string HCPId { get; set; }
 
+        [Required(ErrorMessage = "Please provide your password.")]
+        [Display(Name = "HCP ID")]
         [DataType(DataType.Password)]
-        [MaxLength(ClinicianModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too short.")]
-        [MinLength(ClinicianModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too long.")]
-        [Required(ErrorMessage = "Provide")]
+        [MinLength(ClinicianModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too short.")]
+        [MaxLength(ClinicianModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too long.")]
         public string ClinicianPassword { get; set; }
 
         public static bool IsValidHCPId(string hcpId)
@@ -43,6 +45,26 @@ namespace DepSystems.Models
                 HCPId = clinician.HCPId,
                 Password = clinician.ClinicianPassword
             };
+        }
+
+        public static List<ClinicianModel> Convert(List<Clinician> clinicians)
+        {
+            List<ClinicianModel> models = new List<ClinicianModel>();
+            foreach(var clinician in clinicians)
+            {
+                models.Add(Convert(clinician));
+            }
+            return models;
+        }
+
+        public static List<Clinician> Convert(List<ClinicianModel> models)
+        {
+            List<Clinician> clinicians = new List<Clinician>();
+            foreach (var model in models)
+            {
+                clinicians.Add(Convert(model));
+            }
+            return clinicians;
         }
     }
 }
