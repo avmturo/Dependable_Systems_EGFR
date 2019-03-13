@@ -193,3 +193,5 @@ C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_StatusMessagePartial.g.cshtml.cs
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Clinician\BatchCalculation.g.cshtml.cs
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Clinician\DisplayBatchCalculations.g.cshtml.cs
+C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Clinician\_LiverFunctionalityKeyPartial.g.cshtml.cs
+C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Session\NotAuthorised.g.cshtml.cs

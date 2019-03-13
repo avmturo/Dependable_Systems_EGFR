@@ -54,3 +54,16 @@
     </div>
 </div>
 
+@section Scripts
+{
+    <script>
+        // Internally we store the date as dd/mm/yyyy, however, doing it this way creates it as mm/dd/yyyy
+        // So in JS we have to convert it to the stored format so that it will display correctly
+        var storedDate = $("#DateOfBirth").attr("value");
+        storedDate = new Date(storedDate.substr(3, 3) + storedDate.substr(0, 3) + storedDate.substr(6, 4));
+        // Adding 12 hours due to the timezone modifying the date once set as the html input
+        storedDate.setHours(12);
+        //console.log(storedDate);
+        document.getElementById("DateOfBirth").valueAsDate = storedDate;
+    </script>
+}

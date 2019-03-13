@@ -16,6 +16,10 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
+            @if(Model.RedirectLink != null)
+            {
+                <input asp-for="RedirectLink" value="@Model.RedirectLink" hidden />
+            }
             <div class="form-group">
                 <input type="submit" value="Login" class="btn btn-default" />
             </div>

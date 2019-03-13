@@ -1,6 +1,16 @@
-﻿<div class="row justify-content-center">
+﻿@{
+    Patient patient = new Patient();
+    Clinician clinician = new Clinician();
+}
+@if (ViewData["Redirect"] != null)
+{
+    patient.RedirectLink = clinician.RedirectLink = (string)ViewData["Redirect"];
+}
+
+
+<div class="row justify-content-center">
     <div class="col-md-8 col-sm-12">
-        <partial name="_LoginPatient" model="new Patient()"/>
-        <partial name="_LoginClinician" model="new Clinician()"/>
+        <partial name="_LoginPatient" model="patient" />
+        <partial name="_LoginClinician" model="clinician" />
     </div>
 </div>

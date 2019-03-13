@@ -27,6 +27,7 @@ namespace DepSystems.Controllers
                     Gender = (Gender)details.Gender,
                     Ethnicity = (Ethnicity)details.Ethnicity
                 };
+                
                 return View(calculation);
             }
             return View();
@@ -96,12 +97,13 @@ namespace DepSystems.Controllers
 
         private int UpdateDetails(PatientDetails newPatientDetails, PatientDetailsModel sessionDetails)
         {
+            int result;
             if (sessionDetails != null)
             {
                 sessionDetails.DateOfBirth = newPatientDetails.DateOfBirth;
                 sessionDetails.Ethnicity = (int)newPatientDetails.Ethnicity;
                 sessionDetails.Gender = (int)newPatientDetails.Gender;
-                return PatientProcessor.UpdatePatientDetails(sessionDetails);
+                result = PatientProcessor.UpdatePatientDetails(sessionDetails);
             }
             else
             {
@@ -111,9 +113,14 @@ namespace DepSystems.Controllers
                     Ethnicity = (int)newPatientDetails.Ethnicity,
                     Gender = (int)newPatientDetails.Gender
                 };
-
-                return PatientProcessor.SavePatientDetails(SessionController.GetId(HttpContext.Session), sessionDetails);
+                result = PatientProcessor.SavePatientDetails(SessionController.GetId(HttpContext.Session), sessionDetails);
             }
+
+            if(result == 1)
+            {
+                SessionController.UpdatePatientDetails(HttpContext.Session, sessionDetails);
+            }
+            return result;
         }
     }
 }

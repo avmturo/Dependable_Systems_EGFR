@@ -24,9 +24,14 @@ namespace DepSystems.Filters
             int userTypeInt = (int)userType;
             string redirect = _routePath;
 
-            if(userTypeInt < _userTypeInt)
+            if(userTypeInt != _userTypeInt)
             {
-                if (_userType == UserType.Admin)
+                // The user is actually logged in and trying to access a page without the correct privileges
+                if(userType != UserType.None)
+                {
+                    context.Result = new RedirectToActionResult("NotAuthorised", "Session", null);
+                }
+                else if (_userType == UserType.Admin)
                 {
                     context.Result = new RedirectToActionResult("Login", "Admin", new { redirect });
                 }

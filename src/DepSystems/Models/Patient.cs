@@ -25,6 +25,8 @@ namespace DepSystems.Models
 
         public PatientDetails Details { get; set; }
 
+        public string RedirectLink { get; set; }
+
         public static bool IsValidNHSNumber(string nhsNumber)
         {
             // Need to check if all nhs numbers begin with a 2?

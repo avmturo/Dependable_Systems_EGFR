@@ -19,6 +19,8 @@ namespace DepSystems.Models
         [MaxLength(ClinicianModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too long.")]
         public string ClinicianPassword { get; set; }
 
+        public string RedirectLink { get; set; }
+
         public static bool IsValidHCPId(string hcpId)
         {
             return hcpId.Length == ClinicianModel.HCP_LENGTH;

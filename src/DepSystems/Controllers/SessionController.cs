@@ -35,7 +35,6 @@ namespace DepSystems.Controllers
         {
             session.Set(LOGIN_STATUS, new byte[] { (byte)UserType.Admin });
             session.Set(LOGIN_ID, BitConverter.GetBytes(admin.Id));
-
         }
 
         public static void Logout(ISession session)
@@ -43,6 +42,14 @@ namespace DepSystems.Controllers
             session.Remove(LOGIN_STATUS);
             session.Remove(LOGIN_ID);
             session.Remove(PATIENT_DETAILS);
+        }
+
+        public static void UpdatePatientDetails(ISession session, PatientDetailsModel patientDetails)
+        {
+            if(patientDetails != null)
+            {
+                session.Set(PATIENT_DETAILS, patientDetails.Serialize());
+            }
         }
 
         public static UserType GetLoggedInUserType(ISession session)
@@ -98,6 +105,11 @@ namespace DepSystems.Controllers
                 }
 
                 Login(HttpContext.Session, patientModel, patientDetails);
+
+                if(patient.RedirectLink != null)
+                {
+                    return Redirect(patient.RedirectLink);
+                }
                 return RedirectToAction("Index", "Patient");
             }
 
@@ -113,6 +125,11 @@ namespace DepSystems.Controllers
             if (clinicianModel != null)
             {
                 Login(HttpContext.Session, clinicianModel);
+
+                if (clinician.RedirectLink != null)
+                {
+                    return Redirect(clinician.RedirectLink);
+                }
                 return RedirectToAction("Index", "Clinician");
             }
 
@@ -126,6 +143,7 @@ namespace DepSystems.Controllers
             if(redirect != null)
             {
                 ViewData["ErrorMessage"] = "You must be logged in to view that.";
+                ViewData["Redirect"] = redirect;
             }
             return View();
         }
@@ -134,6 +152,12 @@ namespace DepSystems.Controllers
         {
             Logout(HttpContext.Session);
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult NotAuthorised()
+        {
+            ViewData["ErrorMessage"] = "You do not have authorisation to view that page";
+            return View();
         }
     }
 }

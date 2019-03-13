@@ -6,8 +6,14 @@ namespace DepSystems.Models
 {
     public class Calculation
     {
+        public const int MIN_AGE_INCLUSIVE = 18;
+        public const int MAX_AGE_INCLUSIVE = 110;
+
+        public const double MIN_CREATINE_INCLUSIVE = 0.0001;
+        public const double MAX_CREATINE_INCLUSIVE = 100.0000;
+
         [Required(ErrorMessage = "Please provide an age")]
-        [Range(18, 110, ErrorMessage = "Please provide a valid age (18-110)")]
+        [Range(MIN_AGE_INCLUSIVE, MAX_AGE_INCLUSIVE, ErrorMessage = "Please provide a valid age (18-100)")] // Has to be a const string, cannot use the const ints
         public int Age { get; set; }
 
         [Required(ErrorMessage = "Please provide your ethnicity")]
@@ -19,6 +25,7 @@ namespace DepSystems.Models
         // Add a max/min validation attribute
         [Required(ErrorMessage = "Please provide a creatine value")]
         [Display(Name = "Creatine")]
+        [Range(MIN_CREATINE_INCLUSIVE, MAX_CREATINE_INCLUSIVE)]
         public double CreatineLevel { get; set; }
 
         public Calculation()
@@ -43,6 +50,12 @@ namespace DepSystems.Models
             double gen = 1 - ((int)Gender * 0.258);
 
             return 186 * Math.Pow(CreatineLevel / 88.4, -1.154) * Math.Pow(Age, -0.203) * gen * eth;
+        }
+
+        public bool IsValid()
+        {
+            return Age >= MIN_AGE_INCLUSIVE && Age <= MAX_AGE_INCLUSIVE
+                && CreatineLevel >= MIN_CREATINE_INCLUSIVE && CreatineLevel <= MAX_CREATINE_INCLUSIVE;
         }
 
         public static bool IsValidAge(string ageString)

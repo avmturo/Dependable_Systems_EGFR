@@ -58,7 +58,7 @@
             </div>
         </form>
     </div>
-    @if (Model != null && ViewData.ModelState.IsValid)
+    @if (Model != null && ViewData.ModelState.IsValid && Model.IsValid())
     {
     <div class="col-12">
         <table class="table table-striped table-dark">
