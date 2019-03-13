@@ -33,7 +33,7 @@ using DepSystems.Enums;
 
 #line default
 #line hidden
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"006bf27eb03179a0a11dacf54cd2d4fc3a752775", @"/Views/Shared/Index.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"096d4f9778cb38aed953e06f6b4ef487a2239919", @"/Views/Shared/Index.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d20d768758537d2276a190bddca4df8feb5cc43b", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<DepSystems.Models.Calculation>
     {
@@ -417,17 +417,17 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper.For = ModelExpr
 
 #line default
 #line hidden
-            BeginContext(2908, 330, true);
-            WriteLiteral(@"        <div class=""col-12"">
-            <table class=""table table-striped table-dark"">
-                <thead>
-                    <tr>
-                        <th scope=""col"">eGFR Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>");
+            BeginContext(2908, 290, true);
+            WriteLiteral(@"    <div class=""col-12"">
+        <table class=""table table-striped table-dark"">
+            <thead>
+                <tr>
+                    <th scope=""col"">eGFR Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>");
             EndContext();
             BeginContext(3239, 17, false);
 #line 72 "C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\Shared\Index.cshtml"
@@ -436,8 +436,42 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper.For = ModelExpr
 #line default
 #line hidden
             EndContext();
-            BeginContext(3256, 98, true);
-            WriteLiteral("</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n");
+            BeginContext(3216, 1310, true);
+            WriteLiteral(@"</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class=""egfrKey"" style=""width:100%"" border=""1"">
+
+            <tr>
+                <th bgcolor=""#66ff33"">&gt;90</th>
+                <th bgcolor=""#99ff33"">60-89</th>
+                <th bgcolor=""#ffff00"">45-59</th>
+                <th bgcolor=""#ff9933"">30-44</th>
+                <th bgcolor=""#ff6600"">15-29</th>
+                <th bgcolor=""#cc0000"">&lt;15 </th>
+            </tr>
+            <tr>
+                <td bgcolor =""white"">
+                    Normal kidney function but urine findings or structural
+                    abnormalities or genetic trait point to kidney disease
+                </td>
+                <td bgcolor =""white"">
+                    Mildly reduced kidney function, and other findings (as
+                    for stage 1) point to kidney disease
+                </td>
+                <td bgcolor =""white"">Moderately reduced kidney function</td>
+                <td bgcolor =""white"">Moder");
+            WriteLiteral(@"ately reduced kidney function</td>
+                <td bgcolor =""white"">Severely reduced kidney function</td>
+                <td bgcolor =""white"">
+                    Very severe, or endstage kidney failure
+                </td>
+            </tr>
+
+        </table>
+    </div>
+");
             EndContext();
 #line 77 "C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\Views\Shared\Index.cshtml"
 
@@ -445,7 +479,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper.For = ModelExpr
 
 #line default
 #line hidden
-            BeginContext(3363, 8, true);
+            BeginContext(4535, 8, true);
             WriteLiteral("</div>\r\n");
             EndContext();
         }

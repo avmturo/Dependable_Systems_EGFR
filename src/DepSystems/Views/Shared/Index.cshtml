@@ -60,20 +60,48 @@
     </div>
     @if (Model != null && ViewData.ModelState.IsValid)
     {
-        <div class="col-12">
-            <table class="table table-striped table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">eGFR Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>@Model.Calculate()</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="col-12">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">eGFR Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Calculate()</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="egfrKey" style="width:100%" border="1">
+
+            <tr>
+                <th bgcolor="#66ff33">&gt;90</th>
+                <th bgcolor="#99ff33">60-89</th>
+                <th bgcolor="#ffff00">45-59</th>
+                <th bgcolor="#ff9933">30-44</th>
+                <th bgcolor="#ff6600">15-29</th>
+                <th bgcolor="#cc0000">&lt;15 </th>
+            </tr>
+            <tr>
+                <td bgcolor ="white">
+                    Normal kidney function but urine findings or structural
+                    abnormalities or genetic trait point to kidney disease
+                </td>
+                <td bgcolor ="white">
+                    Mildly reduced kidney function, and other findings (as
+                    for stage 1) point to kidney disease
+                </td>
+                <td bgcolor ="white">Moderately reduced kidney function</td>
+                <td bgcolor ="white">Moderately reduced kidney function</td>
+                <td bgcolor ="white">Severely reduced kidney function</td>
+                <td bgcolor ="white">
+                    Very severe, or endstage kidney failure
+                </td>
+            </tr>
+
+        </table>
+    </div>
 
     }
 </div>
