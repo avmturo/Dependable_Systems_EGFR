@@ -136,7 +136,6 @@ C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\
 C:\Users\User\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Details.g.cshtml.cs
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Details.g.cshtml.cs
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Index.g.cshtml.cs
-H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Admin\CreateClinician.g.cshtml.cs
 H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Login.g.cshtml.cs
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\bin\Debug\netcoreapp2.1\DepSystems.deps.json
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\bin\Debug\netcoreapp2.1\DepSystems.runtimeconfig.json
@@ -195,3 +194,11 @@ C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Clinician\DisplayBatchCalculations.g.cshtml.cs
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Clinician\_LiverFunctionalityKeyPartial.g.cshtml.cs
 C:\Users\taylo\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Session\NotAuthorised.g.cshtml.cs
+H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Admin\Index.g.cshtml.cs
+H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Admin\_ImportClinicianCredentialsPartial.g.cshtml.cs
+H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Clinician\BatchCalculation.g.cshtml.cs
+H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Clinician\DisplayBatchCalculations.g.cshtml.cs
+H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Clinician\_LiverFunctionalityKeyPartial.g.cshtml.cs
+H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Session\NotAuthorised.g.cshtml.cs
+H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\CreatePatient.g.cshtml.cs
+H:\Data\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_StatusMessagePartial.g.cshtml.cs

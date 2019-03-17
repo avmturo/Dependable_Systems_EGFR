@@ -12361,23 +12361,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\taylo\\.nuget\\packages\\": {},
+    "C:\\Users\\k1528824\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\taylo\\Documents\\GitHub\\Dependable_Systems_EGFR\\src\\DepSystems\\DepSystems.csproj",
+      "projectUniqueName": "H:\\Data\\GitHub\\Dependable_Systems_EGFR\\src\\DepSystems\\DepSystems.csproj",
       "projectName": "DepSystems",
-      "projectPath": "C:\\Users\\taylo\\Documents\\GitHub\\Dependable_Systems_EGFR\\src\\DepSystems\\DepSystems.csproj",
-      "packagesPath": "C:\\Users\\taylo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\taylo\\Documents\\GitHub\\Dependable_Systems_EGFR\\src\\DepSystems\\obj\\",
+      "projectPath": "H:\\Data\\GitHub\\Dependable_Systems_EGFR\\src\\DepSystems\\DepSystems.csproj",
+      "packagesPath": "C:\\Users\\k1528824\\.nuget\\packages\\",
+      "outputPath": "H:\\Data\\GitHub\\Dependable_Systems_EGFR\\src\\DepSystems\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\taylo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\k1528824\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12390,8 +12390,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\taylo\\Documents\\GitHub\\Dependable_Systems_EGFR\\src\\DataLibrary\\DataLibrary.csproj": {
-              "projectPath": "C:\\Users\\taylo\\Documents\\GitHub\\Dependable_Systems_EGFR\\src\\DataLibrary\\DataLibrary.csproj"
+            "H:\\Data\\GitHub\\Dependable_Systems_EGFR\\src\\DataLibrary\\DataLibrary.csproj": {
+              "projectPath": "H:\\Data\\GitHub\\Dependable_Systems_EGFR\\src\\DataLibrary\\DataLibrary.csproj"
             }
           }
         }
