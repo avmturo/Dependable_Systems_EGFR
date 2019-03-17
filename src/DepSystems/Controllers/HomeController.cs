@@ -12,12 +12,16 @@ using Microsoft.AspNetCore.Http;
 
 namespace DepSystems.Controllers
 {
-	// Things that can be done on the basic home pages...
-	// Index
-	// Calculation Index
-	// Login
-	// Logout
-	public class HomeController : Controller
+    // http://unitslab.com/node/44
+    //
+    //
+
+    // Things that can be done on the basic home pages...
+    // Index
+    // Calculation Index
+    // Login
+    // Logout
+    public class HomeController : Controller
 	{
 		[HttpGet]
 		public IActionResult Index()
