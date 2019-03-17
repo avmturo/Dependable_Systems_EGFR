@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Patient\**" />
+    <Content Remove="Views\Patient\**" />
+    <EmbeddedResource Remove="Views\Patient\**" />
+    <None Remove="Views\Patient\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\images\alpha.svg" />
   </ItemGroup>
 
@@ -15,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Views\img\" />
-    <Folder Include="Views\Patient\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,21 @@
+﻿@model DepSystems.Models.Clinician
+
+<tr class="edit-clinician">
+    <form class="edit-clinician" data-hcp-id="@Model.HCPId">
+        <td>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="HCPId" class="form-control" />
+            <span asp-validation-for="HCPId" class="text-danger"></span>
+        </td>
+        <td>
+            <input asp-for="ClinicianPassword" class="form-control" />
+            <span asp-validation-for="ClinicianPassword" class="text-danger"></span>
+        </td>
+        <td>
+            <input type="submit" class="edit-clinician btn btn-info" value="Update" />
+        </td>
+        <td>
+            <button class="btn btn-danger">Cancel</button>
+        </td>
+    </form>
+</tr>

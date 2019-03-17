@@ -90,6 +90,25 @@ namespace DepSystems.Controllers
             return PartialView("_StatusMessagePartial", new Tuple<bool, string>(false, $"Could not delete {HCPId}"));
         }
 
+        [HttpPost]
+        [CustomValidate(UserType.Admin)]
+        public IActionResult EditClinicianCredentials(string previousHCPId, string HCPId, string password)
+        {
+            if(!Clinician.IsValidHCPId(HCPId))
+            {
+                return PartialView("_StatusMessagePartial", new Tuple<bool, string>(false, $"Could not update Clinician, HCP ID: {HCPId} is not valid."));
+            }
+            if (!Clinician.IsValidPassword(password))
+            {
+                return PartialView("_StatusMessagePartial", new Tuple<bool, string>(false, $"Could not update Clinician, Password: {password} is not valid."));
+            }
+            if(ClinicianProcessor.UpdateClinician(previousHCPId, HCPId, password) == 1)
+            {
+                return PartialView("_StatusMessagePartial", new Tuple<bool, string>(true, $"Successfully updated Clinician."));
+            }
+            return PartialView("_StatusMessagePartial", new Tuple<bool, string>(false, $"Could not update Clinician, a Clinician already exists with HCP ID: {HCPId}."));
+        }
+
         /// <summary>
         /// A simple login page for the admin
         /// </summary>

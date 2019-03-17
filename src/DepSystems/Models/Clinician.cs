@@ -23,12 +23,12 @@ namespace DepSystems.Models
 
         public static bool IsValidHCPId(string hcpId)
         {
-            return hcpId.Length == ClinicianModel.HCP_LENGTH;
+            return hcpId != null && hcpId.Length == ClinicianModel.HCP_LENGTH;
         }
 
         public static bool IsValidPassword(string password)
         {
-            return password.Length == ClinicianModel.PASSWORD_LENGTH;
+            return password != null && password.Length == ClinicianModel.PASSWORD_LENGTH;
         }
 
         public static Clinician Convert(ClinicianModel clinicianModel)

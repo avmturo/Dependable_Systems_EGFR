@@ -46,18 +46,29 @@
 
                     @foreach (var clinician in Model.Clinicians)
                     {
-                        <tr class="hello">
-                            <td class="hcp-id">@clinician.HCPId</td>
-                            <td>@clinician.ClinicianPassword</td>
-                            <td>
-                                <button class="edit-clinician btn btn-info">Edit</button>
-                            </td>
-                            <td>
-                                <form class="delete-clinician" data-hcp-id="@clinician.HCPId">
-                                    <input type="submit" class="delete-clinician btn btn-danger" value="X" />
-                                </form>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="hcp-id">@clinician.HCPId</td>
+                        <td>**********@*@clinician.ClinicianPassword*@</td>
+                        <td>
+                            <button class="edit-clinician btn btn-info">Edit</button>
+                        </td>
+                        <td>
+                            <form class="delete-clinician" data-hcp-id="@clinician.HCPId">
+                                <input type="submit" class="delete-clinician btn btn-danger" value="X" />
+                            </form>
+                        </td>
+                        @*<td class="hcp-id">@clinician.HCPId</td>
+        <td>@clinician.ClinicianPassword</td>
+        <td>
+            <button class="edit-clinician btn btn-info">Edit</button>
+        </td>
+        <td>
+            <form class="delete-clinician" data-hcp-id="@clinician.HCPId">
+                <input type="submit" class="delete-clinician btn btn-danger" value="X" />
+            </form>
+        </td>*@
+                    </tr>
+                    <partial name="EditClinician" model="clinician" />
                     }
                 </table>
             </div>

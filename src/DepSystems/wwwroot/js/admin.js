@@ -6,13 +6,75 @@
 $(document).ready(function () {
     loadedClinicians = {};
     $("form.delete-clinician").submit(deleteClinician);
+    $("form.edit-clinician").submit(editClinician);
     $("table#clinician-credentials .hcp-id").each(addClinicianToLoaded);
     $("#clinician-search").on("input", searchClinician);
+    setupClinicianToggles();
 });
+
+function setupClinicianToggles() {
+    var tableRows = $("tr");
+    for (var i = 1; i < tableRows.length; i++) {
+        // Show
+        if (i % 2 != 0) {
+            $(tableRows[i]).find("button").click(
+                {
+                    hideElement: tableRows[i],
+                    showElement: tableRows[i + 1]
+                }, toggle);
+        }
+        // Edit
+        else {
+            $(tableRows[i]).find("button").click(
+                {
+                    hideElement: tableRows[i],
+                    showElement: tableRows[i -   1]
+                }, toggle);
+
+            $(tableRows[i]).css("display", "none");
+        }
+    }
+}
+
+function toggle(event) {
+    console.log("toggling");
+    console.log(event.data.hideElement);
+    $(event.data.hideElement).css("display", "none");
+    $(event.data.showElement).removeAttr("style");
+    return false;
+}
+
+function hideEditClinicianForm(element) {
+    // Hide the table row with the edit form
+    $(element).closest("td").css("display", "none");
+    // Show the non-editable version
+}
+
+function showEditClinicianForm(element) {
+    var closest = $(element).closest("tr"); 
+    $(closest).css("display", "none");
+    var hcpId = $(closest).data("hcp-id");
+
+    console.log(hcpId);
+    var cells = $("table").find("[data-hcp-id='" + hcpId + "']");
+    $(cells).each((index, ele) => {
+        console.log(element);
+        console.log(ele);
+        if (ele != element) {
+            $(ele).css("display", "block");
+        }
+    });
+}
 
 function addClinicianToLoaded(index, element) {
     loadedClinicians[$(element).html()] = element;
     //loadedClinicians.push(element.html());
+}
+
+function updatedLoadedClinicians(oldId, newId) {
+    var element = loadedClinicians[oldId];
+    delete loadedClinicians[oldId];
+    loadedClinicians[newId] = element;
 }
 
 function removeClinicianFromLoaded(clinicianId) {
@@ -48,6 +110,28 @@ function searchClinician() {
     onSearchClinician(searchResults, searchRemove);
 }
 
+function editClinician() {
+    if ($(this).valid()) {
+        var currentHcp = $(this).data("hcp-id");
+        var formArray = $(this).serializeArray();
+        var formData = {};
+
+        $(formArray).each((i, field) => {
+            formData[field.name] = field.value;
+        });
+        var newHcp = formData["HCPId"];
+        var newPassword = formData["ClinicianPassword"];
+        
+        $.post("/Admin/EditClinicianCredentials", { previousHCPId: currentHcp, HCPId: newHcp, password: newPassword },
+            function (data, textStatus, jqXHR) {
+                $("#delete-message").html(data);
+                onEditClinician(data, textStatus, jqXHR, currentHcp, newHcp);
+            });
+    }
+    // Prevent form submit (dont want to reload the page)
+    return false;
+}
+
 // Attempts to delete the clinician via AJAX Post
 function deleteClinician() {
     if ($(this).valid()) {
@@ -63,6 +147,27 @@ function deleteClinician() {
     // Testing without actually deleting
     // onDeleteClinician("<div data-success='True'></div>", null, null, $(this), null);
     return false;
+}
+
+function onEditClinician(resultData, textStatus, jqXHR, oldId, newId) {
+    
+    // update visible password
+    if ($(resultData).data("success") === "True") {
+        // update loaded clinician
+        updatedLoadedClinicians(oldId, newId);
+        // update delete form hcp-id
+        $("[data-hcp-id='" + oldId + "']").each((index, element) => {
+            $(element).data("hcp-id", newId);
+        });
+
+        $(".hcp-id").each((index, element) => {
+            if ($(element).html() == oldId) {
+                $(element).html(newId);
+            }
+        })
+
+
+    }
 }
 
 // Displays the result of deleting the clinician in the appropriate DOM element.

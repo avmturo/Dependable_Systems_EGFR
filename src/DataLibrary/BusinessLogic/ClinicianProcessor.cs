@@ -60,6 +60,26 @@ namespace DataLibrary.BusinessLogic
             return successfulInserts;
         }
 
+        public static int UpdateClinician(string previousHcpId, string hcpId, string password)
+        {
+            ClinicianModel clinicianModel = GetClinicianByHCP(previousHcpId);
+            if(clinicianModel == null)
+            {
+                return 0;
+            }
+
+            clinicianModel.HCPId = hcpId;
+            clinicianModel.Password = password;
+
+            return SqlDataAccess.Save<ClinicianModel>
+            (
+              @"UPDATE dbo.Clinician
+                    SET HCPId = @HCPId, Password = @Password
+                    WHERE Id = @Id",
+              clinicianModel
+            );
+        }
+
         public static List<ClinicianModel> GetAllClinicians()
         {
             return SqlDataAccess.Load<ClinicianModel>
@@ -84,6 +104,21 @@ namespace DataLibrary.BusinessLogic
             );
 
             return clinicianModel;
+        }
+
+        public static ClinicianModel GetClinicianByHCP(string hcpId)
+        {
+            ClinicianModel data = new ClinicianModel
+            {
+                HCPId = hcpId
+            };
+
+            return SqlDataAccess.LoadSingle<ClinicianModel>
+            (
+                @"SELECT * FROM dbo.Clinician
+                    WHERE HCPId = @HCPId",
+                data
+            );
         }
 
         public static int DeleteClinician(string hcpId)
