@@ -9,8 +9,8 @@ namespace DepSystems.Models
         public const int MIN_AGE_INCLUSIVE = 18;
         public const int MAX_AGE_INCLUSIVE = 110;
 
-        public const double MIN_CREATINE_INCLUSIVE = 0.0001;
-        public const double MAX_CREATINE_INCLUSIVE = 100.0000;
+        //public const double MIN_CREATINE_INCLUSIVE = 0.0001;
+        //public const double MAX_CREATINE_INCLUSIVE = 100.0000;
 
         [Required(ErrorMessage = "Please provide an age")]
         [Range(MIN_AGE_INCLUSIVE, MAX_AGE_INCLUSIVE, ErrorMessage = "Please provide a valid age (18-100)")] // Has to be a const string, cannot use the const ints
@@ -23,10 +23,13 @@ namespace DepSystems.Models
         public Gender Gender { get; set; }
 
         // Add a max/min validation attribute
+        // Conversion rate: 1mmol = 0.0113mg/dl
         [Required(ErrorMessage = "Please provide a creatine value")]
-        [Display(Name = "Creatine")]
-        [Range(MIN_CREATINE_INCLUSIVE, MAX_CREATINE_INCLUSIVE)]
-        public double CreatineLevel { get; set; }
+        [Display(Name = "Creatinine")]
+        //[Range(MIN_CREATINE_INCLUSIVE, MAX_CREATINE_INCLUSIVE)]
+        public double CreatinineLevel { get; set; }
+
+        public bool UseMgdl { get; set; }
 
         public Calculation()
         {
@@ -37,7 +40,7 @@ namespace DepSystems.Models
             Age = a;
             Ethnicity = e; 
             Gender = g;
-            CreatineLevel = cl;
+            CreatinineLevel = cl;
         }
 
         public double Calculate()
@@ -49,13 +52,18 @@ namespace DepSystems.Models
             double eth = 1 + ((int)Ethnicity * 0.210);
             double gen = 1 - ((int)Gender * 0.258);
 
-            return 186 * Math.Pow(CreatineLevel / 88.4, -1.154) * Math.Pow(Age, -0.203) * gen * eth;
+            double result = 186 * Math.Pow(CreatinineLevel / 88.4, -1.154) * Math.Pow(Age, -0.203) * gen * eth;
+            if(UseMgdl)
+            {
+                result /= 176.3551637279597;
+            }
+            return Math.Round(result, 2);
         }
 
         public bool IsValid()
         {
             return Age >= MIN_AGE_INCLUSIVE && Age <= MAX_AGE_INCLUSIVE
-                && CreatineLevel >= MIN_CREATINE_INCLUSIVE && CreatineLevel <= MAX_CREATINE_INCLUSIVE;
+                && CreatinineLevel > 0; //= MIN_CREATINE_INCLUSIVE && CreatinineLevel <= MAX_CREATINE_INCLUSIVE;
         }
 
         public static bool IsValidAge(string ageString)

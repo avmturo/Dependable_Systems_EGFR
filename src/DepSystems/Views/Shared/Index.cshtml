@@ -40,15 +40,24 @@
                     <span asp-validation-for="Ethnicity" class="text-danger"></span>
                 </div>
 
-                <!-- Creatine Level -->
+                <!-- Creatinine Level -->
                 <div class="col-12 form-group mb-3">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon2">Creatine</span>
+                            <span class="input-group-text" id="creatinine-input">Creatinine</span>
                         </div>
-                        <input asp-for="CreatineLevel" type="number" class="form-control" placeholder="Creatine" aria-label="Creatine" aria-describedby="basic-addon2">
+                        <input asp-for="CreatinineLevel" type="number" class="form-control" placeholder="Creatine" aria-label="Creatinine" aria-describedby="creatinine-input">
                     </div>
-                    <span asp-validation-for="CreatineLevel" class="text-danger"></span>
+                    <span asp-validation-for="CreatinineLevel" class="text-danger"></span>
+                </div>
+                <!-- Use Micromol -->
+                <div class="col-12 form-group mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon2">Use Mg/dl (umol by default)</span>
+                        </div>
+                        <input asp-for="UseMgdl" type="checkbox" class="form-control">
+                    </div>
                 </div>
 
                 <!-- Submission -->
