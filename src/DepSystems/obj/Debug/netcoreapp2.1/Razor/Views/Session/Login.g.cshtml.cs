@@ -70,7 +70,11 @@ using DepSystems.Models;
             WriteLiteral("\r\n\r\n<div class=\"row justify-content-center\">\r\n    <div class=\"col-md-8 col-sm-12\">\r\n        ");
             EndContext();
             BeginContext(306, 48, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "5f84666989044ccda5d5800e0c502f3b", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "cf49b3124a0d4d1d89ae8d608c118c5c", async() => {
+>>>>>>> 3aeef317a0b68d6ddb5627494a7fda0a62964c10
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -95,7 +99,11 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper.Model = patient;
             WriteLiteral("\r\n        ");
             EndContext();
             BeginContext(364, 52, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a37f624509914ed998a2a978da03d6d3", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "43957407080d452bbdf79d384d6808f3", async() => {
+>>>>>>> 3aeef317a0b68d6ddb5627494a7fda0a62964c10
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

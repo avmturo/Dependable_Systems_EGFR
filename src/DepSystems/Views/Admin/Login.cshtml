@@ -1,6 +1,5 @@
 ﻿@model DepSystems.Models.Admin
 
-
 <h4>Login</h4>
 <hr />
 <div class="row justify-content-center">
@@ -18,7 +17,7 @@
                 <div class="input-group-prepend">
                     <label asp-for="Password" class="input-group-text"></label>
                 </div>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" type="password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">

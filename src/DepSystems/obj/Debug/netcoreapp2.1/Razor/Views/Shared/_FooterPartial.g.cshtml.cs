@@ -116,7 +116,11 @@ using DepSystems.Models;
         &copy; 2019 - ");
             EndContext();
             BeginContext(2404, 37, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "746d935e567d43e0bdebab4bd607674f", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7da088625ba840d881f678ca0736ad65", async() => {
+>>>>>>> 3aeef317a0b68d6ddb5627494a7fda0a62964c10
                 BeginContext(2426, 11, true);
                 WriteLiteral(" Alpha Team");
                 EndContext();

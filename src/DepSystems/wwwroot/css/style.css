@@ -33,3 +33,9 @@ tr.edit-clinician
 {
     height: 128px;
 }
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}

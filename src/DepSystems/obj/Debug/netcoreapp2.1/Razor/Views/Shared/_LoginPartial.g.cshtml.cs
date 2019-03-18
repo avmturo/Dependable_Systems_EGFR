@@ -67,7 +67,11 @@ using DepSystems.Models;
                 ");
             EndContext();
             BeginContext(637, 54, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1751ac1a1e9547e8a591ddef68b75b46", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7dc1e650b9c64bec88b8f2b0875384d7", async() => {
+>>>>>>> 3aeef317a0b68d6ddb5627494a7fda0a62964c10
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -92,7 +96,11 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper.Model = new Patient();
             WriteLiteral("\r\n                ");
             EndContext();
             BeginContext(709, 58, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a85844d1db3e42f8b6adac041dc044c6", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ff41d4c601d2460c9ede6cd9f4aa70cf", async() => {
+>>>>>>> 3aeef317a0b68d6ddb5627494a7fda0a62964c10
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

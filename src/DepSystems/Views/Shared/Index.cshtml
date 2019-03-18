@@ -40,15 +40,20 @@
                     <span asp-validation-for="Ethnicity" class="text-danger"></span>
                 </div>
 
-                <!-- Creatine Level -->
+                <!-- Creatinine Level -->
                 <div class="col-12 form-group mb-3">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon2">Creatine</span>
+                            <span class="input-group-text" id="creatinine-input">Creatinine</span>
                         </div>
-                        <input asp-for="CreatineLevel" type="number" class="form-control" placeholder="Creatine" aria-label="Creatine" aria-describedby="basic-addon2">
+                        <input asp-for="CreatinineLevel" type="number" class="form-control" placeholder="Creatine" aria-label="Creatinine" aria-describedby="creatinine-input">
                     </div>
-                    <span asp-validation-for="CreatineLevel" class="text-danger"></span>
+                    <span asp-validation-for="CreatinineLevel" class="text-danger"></span>
+                </div>
+                <!-- Use Micromol -->
+                <div class="col-12 form-group mb-3 text-center">
+                        <input asp-for="UseMgdl" type="checkbox" class="form-control" data-toggle="toggle" data-on="mg/dL" data-off="&#181;mol" data-onstyle="success" data-offstyle="info">
+                    </div>
                 </div>
 
                 <!-- Submission -->
@@ -60,156 +65,156 @@
     </div>
     @if (Model != null && ViewData.ModelState.IsValid && Model.IsValid())
     {
-    <div class="col-12">
+        <div class="col-12">
 
-        @if (Model.Calculate() >= 90)
-        {
+            @if (Model.Calculate() >= 90)
+            {
 
-            <table class="table table-striped table-dark" style="border: 2px solid #66ff33">
-                <thead>
-                    <tr>
-                        <th scope="col">eGFR Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>@Model.Calculate()</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Value greate than or equal to 90 Indicates normal kidney function but urine findings or structural
-                            abnormalities or genetic trait point to kidney disease
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <table class="table table-striped table-dark" style="border: 2px solid #66ff33">
+                    <thead>
+                        <tr>
+                            <th scope="col">eGFR Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Calculate()</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Value greate than or equal to 90 Indicates normal kidney function but urine findings or structural
+                                abnormalities or genetic trait point to kidney disease
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        }
-        else if (Model.Calculate() >= 60 && Model.Calculate() < 90)
-        {
-            <table class="table table-striped table-dark" style="border: 2px solid #99ff33">
-                <thead>
-                    <tr>
-                        <th scope="col">eGFR Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>@Model.Calculate()</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Value between 60 and 90 indicates mildly reduced kidney function, and other findings (as
-                            for stage 1) point to kidney disease
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            }
+            else if (Model.Calculate() >= 60 && Model.Calculate() < 90)
+            {
+                <table class="table table-striped table-dark" style="border: 2px solid #99ff33">
+                    <thead>
+                        <tr>
+                            <th scope="col">eGFR Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Calculate()</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Value between 60 and 90 indicates mildly reduced kidney function, and other findings (as
+                                for stage 1) point to kidney disease
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        }
-        else if (Model.Calculate() >= 45 && Model.Calculate() < 60)
-        {
-            <table class="table table-striped table-dark" style="border: 2px solid #ffff00">
-                <thead>
-                    <tr>
-                        <th scope="col">eGFR Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>@Model.Calculate()</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Value between 45 and 60 indicates moderately reduced kidney function, Stage 1
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            }
+            else if (Model.Calculate() >= 45 && Model.Calculate() < 60)
+            {
+                <table class="table table-striped table-dark" style="border: 2px solid #ffff00">
+                    <thead>
+                        <tr>
+                            <th scope="col">eGFR Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Calculate()</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Value between 45 and 60 indicates moderately reduced kidney function, Stage 1
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        }
-        else if (Model.Calculate() >= 30 && Model.Calculate() < 45)
-        {
-            <table class="table table-striped table-dark" style="border: 2px solid #ff9933">
-                <thead>
-                    <tr>
-                        <th scope="col">eGFR Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>@Model.Calculate()</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Value between 30 and 45 indicates moderately reduced kidney function, Stage 2
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            }
+            else if (Model.Calculate() >= 30 && Model.Calculate() < 45)
+            {
+                <table class="table table-striped table-dark" style="border: 2px solid #ff9933">
+                    <thead>
+                        <tr>
+                            <th scope="col">eGFR Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Calculate()</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Value between 30 and 45 indicates moderately reduced kidney function, Stage 2
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        }
-        else if (Model.Calculate() >= 15 && Model.Calculate() < 30)
-        {
-            <table class="table table-striped table-dark" style="border: 2px solid #ff6600">
-                <thead>
-                    <tr>
-                        <th scope="col">eGFR Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>@Model.Calculate()</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Value between 15 and 30 indicates severely reduced kidney functionality.
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            }
+            else if (Model.Calculate() >= 15 && Model.Calculate() < 30)
+            {
+                <table class="table table-striped table-dark" style="border: 2px solid #ff6600">
+                    <thead>
+                        <tr>
+                            <th scope="col">eGFR Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Calculate()</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Value between 15 and 30 indicates severely reduced kidney functionality.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        }
-        else if (Model.Calculate() < 15)
-        {
-            <table class="table table-striped table-dark" style="border: 2px solid #cc0000">
-                <thead>
-                    <tr>
-                        <th scope="col">eGFR Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>@Model.Calculate()</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Value less than 15 indicates Very severe, or endstage kidney failure
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            }
+            else if (Model.Calculate() < 15)
+            {
+                <table class="table table-striped table-dark" style="border: 2px solid #cc0000">
+                    <thead>
+                        <tr>
+                            <th scope="col">eGFR Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Calculate()</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Value less than 15 indicates Very severe, or endstage kidney failure
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        }
-        else
-        {
-            <table class="table table-striped table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">eGFR Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>@Model.Calculate()</td>
-                    </tr>
-                </tbody>
-            </table>
+            }
+            else
+            {
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">eGFR Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Calculate()</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        }
+            }
 
 
-    </div>
+        </div>
 
     }
 </div>
