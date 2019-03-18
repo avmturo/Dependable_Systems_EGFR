@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Http
+@using DepSystems.Enums
+
+@model DepSystems.Models.Patient
+@{
+    ViewData["Title"] = "Home";
+}
+<h4>Confirm Account Delete</h4>
+<div class="col-12 text-center">
+    <div class="row justify-content-center bg-dark py-5">
+        <input type="button" value="Do Not Delete" class="btn btn-secondary" onclick="@("window.location.href='" + @Url.Action("DoNotDelete", "Patient") + "'");" />
+        <form asp-action="DeleteAccountConfirm" method="post">
+            <input type="submit" value="Delete Account" class="btn btn-danger" />
+        </form>
+    </div>
+</div>

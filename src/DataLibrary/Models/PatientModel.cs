@@ -16,5 +16,6 @@
         public string NHSNumber { get; set; }
         public string Password { get; set; }
         public int? Details { get; set; }
+        public string NewPassword { get; set; }
     }
 }

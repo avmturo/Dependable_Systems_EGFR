@@ -10,7 +10,7 @@
 <h4>Personal Details</h4>
 <hr />
 
-@if(Model == null)
+@if (Model == null)
 {
     <div class="row justify-content-center">
         <div class="col-8 mb-4">
@@ -51,13 +51,18 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
-        <input type="button" value="Change Password" onclick="@("window.location.href='" + @Url.Action("ChangePassword", "Patient") + "'");" />
+        <div class="col-12 text-center">
+            <input type="button" value="Change Password" class="btn btn-secondary" onclick="@("window.location.href='" + @Url.Action("ChangePasswordPage", "Patient") + "'");" />
+
+            <input type="button" value="Delete Account" class="btn btn-danger" onclick="@("window.location.href='" + @Url.Action("DeleteAccountPage", "Patient") + "'");" />
+
+        </div>
 
     </div>
 </div>
 
 @section Scripts
-{
+    {
     <script>
         // Internally we store the date as dd/mm/yyyy, however, doing it this way creates it as mm/dd/yyyy
         // So in JS we have to convert it to the stored format so that it will display correctly

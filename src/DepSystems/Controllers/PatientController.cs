@@ -87,13 +87,55 @@ namespace DepSystems.Controllers
 
         //    return View(patientDetails);
         //}
-       
-        // change password action
 
+        // change password action
         [CustomValidate(UserType.Patient, routePath: @"/Patient/Details")]
-        public IActionResult ChangePassword(String ChangePassword, Patient PatiendDetails)
+        public IActionResult ChangePasswordPage()
         {
+
             return View("ChangePassword");
+        }
+        [CustomValidate(UserType.Patient, routePath: @"/Patient/Details")]
+        public IActionResult DeleteAccountPage()
+        {
+
+            return View("DeleteAccountConfirm");
+        }
+        [CustomValidate(UserType.Patient, routePath: @"/Patient/DeleteAccountConfirm")]
+        public IActionResult DoNotDelete()
+        {
+
+            return View("Details");
+        }
+        [HttpPost]
+        [CustomValidate(UserType.Patient, routePath: @"/Patient/DeleteAccountConfirm")]
+        public IActionResult DeleteAccountConfirm()
+        {
+            var details = SessionController.GetPatientDetails(HttpContext.Session);
+            int id = details.Id;
+            PatientProcessor.DeletePatient(id);
+            SessionController.Logout(HttpContext.Session);
+            return View("Index");
+        }
+
+        [HttpPost]
+        [CustomValidate(UserType.Patient, routePath: @"/Patient/ChangePassword")]
+        public IActionResult ChangePassword(Patient PatientDetails)
+        {
+            var details = SessionController.GetPatientDetails(HttpContext.Session);
+            int id = details.Id;
+            PatientModel currentPatient = PatientProcessor.LoadPatient(id);
+            String currentPassword = currentPatient.Password;
+            if (PatientDetails.Password == currentPassword)
+            {
+                PatientProcessor.UpdatePatientPassword(id, PatientDetails.NewPassword);
+                return PartialView("_StatusMessagePartial", new Tuple<bool, string>(false, $"Password Successfully Updated"));
+            }
+            else
+            {
+                return PartialView("_StatusMessagePartial", new Tuple<bool, string>(false, $"Current Password did Not match, Password Not Updated"));
+            }
+            
         }
 
         [HttpPost]

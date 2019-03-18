@@ -105,3 +105,4 @@ C:\Users\avmtu\OneDrive\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\
 C:\Users\avmtu\OneDrive\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\DepSystems.dll
 C:\Users\avmtu\OneDrive\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\DepSystems.pdb
 C:\Users\avmtu\OneDrive\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\ChangePassword.g.cshtml.cs
+C:\Users\avmtu\OneDrive\Documents\GitHub\Dependable_Systems_EGFR\src\DepSystems\obj\Debug\netcoreapp2.1\Razor\Views\Shared\DeleteAccountConfirm.g.cshtml.cs

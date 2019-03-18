@@ -46,6 +46,39 @@ namespace DataLibrary.BusinessLogic
             );
         }
 
+        public static int UpdatePatientPassword(int id, string newpassword)
+        {
+            PatientModel patientModel = LoadPatient(id);
+            if (patientModel == null)
+            {
+                return 0;
+            }
+
+            patientModel.NewPassword = newpassword;
+
+            return SqlDataAccess.Save<PatientModel>
+            (
+              @"UPDATE dbo.Patient
+                    SET Password = @NewPassword
+                    WHERE Id = @Id",
+              patientModel
+            );
+        }
+        public static int DeletePatient(int id)
+        {
+            PatientModel patientModel = LoadPatient(id);
+            if (patientModel == null)
+            {
+                return 0;
+            }
+
+            return SqlDataAccess.Save<PatientModel>
+            (
+              @"DELETE FROM dbo.Patient WHERE Id = @Id",
+              patientModel
+            );
+        }
+
         public static List<PatientModel> LoadPatients()
         {
             return SqlDataAccess.Load<PatientModel>
