@@ -66,6 +66,35 @@ namespace DepSystems.Controllers
 
             return View(patientDetails);
         }
+        //[HttpPost]
+        //[CustomValidate(UserType.Patient, routePath: @"/Patient/Details")]
+        //public IActionResult UpdatePassword(Patient patient)
+        //{
+        //    PatientModel patientModel = PatientProcessor.LoadPatient((int)patientModel.Details);
+        //    PatientDetails patientDetails = null;
+
+        //    // Check that patient details were extracted from the session controller
+        //    // Null details means that the logged on patient does not have details saved yet
+        //    if (patientDetailsModel != null)
+        //    {
+        //        patientDetails = new PatientDetails
+        //        {
+        //            DateOfBirth = patientDetailsModel.DateOfBirth,
+        //            Gender = (Gender)patientDetailsModel.Gender,
+        //            Ethnicity = (Ethnicity)patientDetailsModel.Ethnicity
+        //        };
+        //    }
+
+        //    return View(patientDetails);
+        //}
+       
+        // change password action
+
+        [CustomValidate(UserType.Patient, routePath: @"/Patient/Details")]
+        public IActionResult ChangePassword(String ChangePassword, Patient PatiendDetails)
+        {
+            return View("ChangePassword");
+        }
 
         [HttpPost]
         [CustomValidate(UserType.Patient, routePath: @"/Patient/Details")]

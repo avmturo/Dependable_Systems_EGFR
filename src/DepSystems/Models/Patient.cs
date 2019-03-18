@@ -23,6 +23,12 @@ namespace DepSystems.Models
         [MaxLength(PatientModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too long.")]
         public string Password { get; set; }
 
+        [Required]
+        [DataType(DataType.Password)]
+        [MinLength(PatientModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too short.")]
+        [MaxLength(PatientModel.PASSWORD_LENGTH, ErrorMessage = "The password you provided is too long.")]
+        public string NewPassword { get; set; }
+
         public PatientDetails Details { get; set; }
 
         public string RedirectLink { get; set; }

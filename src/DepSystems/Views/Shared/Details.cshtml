@@ -27,7 +27,7 @@
                 <div class="input-group-prepend">
                     <label asp-for="DateOfBirth" class="input-group-text"></label>
                 </div>
-                <input asp-for="DateOfBirth" value="@dateString" class="form-control" aria-describedby="DateOfBirthHelpBlock"/>
+                <input asp-for="DateOfBirth" value="@dateString" class="form-control" aria-describedby="DateOfBirthHelpBlock" />
                 <small id="DateOfBirthHelpBlock" class="form-text text-muted">
                     Your date of birth must be provided in the UK format (DD/MM/YYYY).
                 </small>
@@ -51,6 +51,8 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
+        <input type="button" value="Change Password" onclick="@("window.location.href='" + @Url.Action("ChangePassword", "Patient") + "'");" />
+
     </div>
 </div>
 
