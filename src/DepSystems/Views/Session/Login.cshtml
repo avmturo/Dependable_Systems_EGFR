@@ -10,7 +10,16 @@
 
 <div class="row justify-content-center">
     <div class="col-md-8 col-sm-12">
-        <partial name="_LoginPatient" model="patient" />
-        <partial name="_LoginClinician" model="clinician" />
+        <div class="tab-buttons tab-group-2">
+            <button class="btn btn-info" onclick="changeTab('partialSessionPatientLogin', 'tab-group-2', this)">Patient</button>
+            <button class="btn" onclick="changeTab('partialSessionClinicianLogin', 'tab-group-2', this)">Clinician</button>
+        </div>
+
+        <div id="partialSessionPatientLogin" class="tab-group-2 pt-3" style="display: block;">
+            <partial name="_LoginPatient" model="new Patient()" />
+        </div>
+        <div id="partialSessionClinicianLogin" class="tab-group-2 pt-3" style="display: none;">
+            <partial name="_LoginClinician" model="new Clinician()" />
+        </div>
     </div>
 </div>
