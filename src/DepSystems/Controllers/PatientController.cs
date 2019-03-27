@@ -120,21 +120,21 @@ namespace DepSystems.Controllers
 
         [HttpPost]
         [CustomValidate(UserType.Patient, routePath: @"/Patient/ChangePassword")]
-        public IActionResult ChangePassword(Patient PatientDetails)
+        public IActionResult ChangePassword(PatientModel patientM)
         {
-            var details = SessionController.GetPatientDetails(HttpContext.Session);
-            int id = details.Id;
+            int id = SessionController.GetId(HttpContext.Session);
             PatientModel currentPatient = PatientProcessor.LoadPatient(id);
             String currentPassword = currentPatient.Password;
-            if (PatientDetails.Password == currentPassword)
+            if (patientM.Password == currentPassword)
             {
-                PatientProcessor.UpdatePatientPassword(id, PatientDetails.NewPassword);
+                PatientProcessor.UpdatePatientPassword(id, patientM.NewPassword);
                 return PartialView("_StatusMessagePartial", new Tuple<bool, string>(false, $"Password Successfully Updated"));
             }
             else
             {
                 return PartialView("_StatusMessagePartial", new Tuple<bool, string>(false, $"Current Password did Not match, Password Not Updated"));
             }
+
             
         }
 
@@ -163,7 +163,7 @@ namespace DepSystems.Controllers
         [CustomValidate(UserType.Patient, routePath: @"/Patient/History")]
         public IActionResult History()
         {
-            return View();
+            return null;
         }
 
         private int UpdateDetails(PatientDetails newPatientDetails, PatientDetailsModel sessionDetails)
