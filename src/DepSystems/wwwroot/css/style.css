@@ -39,3 +39,14 @@ tr.edit-clinician
     background-color: #fff;
     border-color: #ccc;
 }
+
+div.tab-buttons {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 8px 4px 2px 4px;
+    border-radius: 4px 4px 0px 0px;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.1);
+}
+
+div.tab-buttons active {
+    background-color: aquamarine;
+}

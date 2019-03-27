@@ -10,13 +10,22 @@
             </div>
 
             <div class="modal-body">
-                <partial name="_LoginPatient" model="new Patient()" />
-                <partial name="_LoginClinician" model="new Clinician()" />
-                    
+                <div class="tab-buttons tab-group-1">
+                    <button class="btn btn-info" onclick="changeTab('partialPatientLogin', 'tab-group-1', this)">Patient</button>
+                    <button class="btn" onclick="changeTab('partialClinicianLogin', 'tab-group-1', this)">Clinician</button>
+                </div>
+
+                <div id="partialPatientLogin" class="tab-group-1 pt-3" style="display: block;">
+                    <partial name="_LoginPatient" model="new Patient()" />
+                </div>
+                <div id="partialClinicianLogin" class="tab-group-1 pt-3" style="display: none;">
+                    <partial name="_LoginClinician" model="new Clinician()" />
+                </div>
+
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
